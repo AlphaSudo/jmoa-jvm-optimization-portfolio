@@ -1,8 +1,26 @@
+<p align="center">
+  <img src="ASSETS/jmoa-portfolio-hero.png" alt="JMOA build-time JVM memory optimization portfolio overview" width="100%">
+</p>
+
 # JMOA JVM Optimization Portfolio
 
-JMOA is a build-time JVM optimization project focused on reducing Spring Boot container memory by rewriting selected lambda and adapter patterns before runtime. The project validates that JVM memory optimization is not only a bytecode problem: artifact packaging, classloader visibility, CDS/no-CDS mode, runtime policy, and measurement discipline determine whether fewer classes become lower PSS and Private_Dirty.
+JMOA is a build-time JVM optimization project focused on reducing Spring Boot container memory by rewriting selected lambda and adapter patterns before runtime. The central finding is practical: JVM memory optimization is not only a bytecode problem. Artifact packaging, classloader visibility, CDS/no-CDS mode, runtime policy, and measurement discipline decide whether fewer classes become lower PSS and Private_Dirty.
 
-This portfolio summarizes three confirmed case studies across different service shapes and deployment modes.
+This portfolio summarizes three confirmed case studies across different service shapes and deployment modes, with Spring PetClinic as the public no-CDS centerpiece.
+
+## Confirmed Results
+
+| Service | Source | Runtime mode | CDS? | Confirmed result | Status |
+| --- | --- | --- | --- | --- | --- |
+| Patient-service | private/internal | expanded classpath | yes | ~4.2-4.4 MB median memory reduction | confirmed |
+| Doctor-service | private/internal | corrected Spring Boot fat JAR | yes | ~2.7 MB median PSS reduction | confirmed |
+| Spring PetClinic `customers-service` | public OSS | exploded Boot / `JarLauncher` | no | ~4.6 MB median PSS reduction | confirmed |
+
+<p align="center">
+  <img src="ASSETS/charts/median-pss-savings.png" alt="Confirmed median memory savings across Patient, Doctor, and PetClinic services" width="92%">
+</p>
+
+The PetClinic result is deliberately phrased narrowly: it is a public open-source, non-CDS win under the project's real exploded Boot deployment shape with a low-dirty no-CDS runtime policy. The same candidate was not a final win under the artificial fat-JAR measurement shape.
 
 ## What JMOA Does
 
@@ -17,21 +35,15 @@ The work here focuses on:
 - CDS and no-CDS measurement protocols
 - Container memory measurement with PSS, Private_Dirty, cgroup `memory.current`, NMT, class histograms, and smaps
 
+<p align="center">
+  <img src="ASSETS/diagrams/jmoa-pipeline.png" alt="JMOA product pipeline from workload profiling through runtime-origin verification and PSS measurement" width="100%">
+</p>
+
 ## Why Build-Time Instead Of Runtime Javaagent
 
 Runtime javaagents are useful for diagnostics, but they complicate production memory claims. This portfolio uses build-time transformation so the measured process runs without a JMOA runtime javaagent.
 
 That matters because the memory claim should belong to the optimized artifact and deployment shape, not to a live instrumentation layer.
-
-## Validated Results
-
-| Service | Source | Runtime mode | CDS? | Result | Status |
-| --- | --- | --- | --- | --- | --- |
-| Patient-service | private/internal | expanded classpath | yes | ~4.2-4.4 MB median memory reduction | confirmed |
-| Doctor-service | private/internal | corrected Spring Boot fat JAR | yes | ~2.7 MB median PSS reduction | confirmed |
-| Spring PetClinic `customers-service` | public OSS | exploded Boot / `JarLauncher` | no | ~4.6 MB median PSS reduction | confirmed |
-
-The PetClinic case is the public centerpiece because it is based on a public open-source service and confirms a no-CDS result.
 
 ## Case Studies
 
@@ -49,6 +61,10 @@ The PetClinic case is the public centerpiece because it is based on a public ope
 5. PSS and Private_Dirty are more useful than RSS for JVM container memory claims.
 6. CDS and no-CDS are different product modes with different economics.
 7. Invalid measurements are valuable when they expose product invariants.
+
+<p align="center">
+  <img src="ASSETS/diagrams/runtime-modes.svg" alt="Runtime shapes used by the JMOA portfolio: expanded classpath, corrected fat JAR, and exploded Boot app" width="100%">
+</p>
 
 ## Measurement Methodology
 
@@ -70,6 +86,10 @@ Supporting diagnostics:
 - dynamic class-load origin logs
 
 The case studies distinguish measured facts from hypotheses. Invalid intermediate phases are documented as lessons but not cited as final wins.
+
+## Diagram Policy
+
+The README publishes rendered images because they are easier to scan on GitHub and in recruiter/reviewer contexts. Mermaid sources are kept beside the rendered assets under [ASSETS](ASSETS/) so the diagrams remain editable and auditable.
 
 ## Claim Integrity Rules
 

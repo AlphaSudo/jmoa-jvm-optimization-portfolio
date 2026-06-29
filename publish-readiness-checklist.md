@@ -15,6 +15,8 @@ Generated: 2026-06-28
 - [x] LinkedIn draft exists.
 - [x] CV bullet draft exists.
 - [x] Job application paragraph draft exists.
+- [x] README uses rendered, watermark-free visuals.
+- [x] Mermaid sources are kept for diagram maintenance.
 
 ## Human Review Required
 
@@ -22,8 +24,8 @@ Generated: 2026-06-28
 - [ ] Confirm no credentials or internal URLs are present.
 - [ ] Confirm no private patient/doctor data is present.
 - [ ] Decide license or publication note.
-- [ ] Decide whether to publish diagrams as Mermaid, rendered images, or both.
-- [ ] Add actual GitHub repo URL to LinkedIn draft.
+- [x] Decide whether to publish diagrams as Mermaid, rendered images, or both: publish rendered images, keep Mermaid sources.
+- [x] Add actual GitHub repo URL to LinkedIn draft.
 - [ ] Review generated PDF if/when exported.
 
 ## Claim Audit

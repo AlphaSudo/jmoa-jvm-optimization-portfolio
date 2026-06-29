@@ -12,6 +12,9 @@
 *.log
 *.tmp
 
+# Local scratch render kept out of the published repo.
+ASSETS/diagrams/runtime-modes.png
+
 RAW-EVIDENCE/
 LOCAL-ONLY/
 PRIVATE/

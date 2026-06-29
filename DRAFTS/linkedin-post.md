@@ -10,4 +10,4 @@ The work validates JMOA across three service shapes:
 
 The biggest lesson: JVM memory optimization is not just bytecode rewriting. Candidate selection, artifact materialization, classloader visibility, runtime policy, and PSS/Private_Dirty measurement all decide whether fewer classes become lower container memory.
 
-Repo: `<link>`
+Repo: https://github.com/AlphaSudo/jmoa-jvm-optimization-portfolio
