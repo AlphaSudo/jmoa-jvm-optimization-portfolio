@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-06-28",
+  "portfolio": "JMOA JVM Optimization Portfolio v1",
+  "accepted_claims": [
+    {
+      "case": "patient-service",
+      "source": "private/internal",
+      "runtime_mode": "expanded classpath",
+      "cds": true,
+      "official_claim": "Phase 31D-P2: approximately 4.2-4.4 MB median container memory reduction, 9/9 individual wins",
+      "supporting_evidence": "Phase 31E independent evidence: approximately 2.7-2.9 MB container memory reduction",
+      "publication_status": "sanitized summary only"
+    },
+    {
+      "case": "doctor-service",
+      "source": "private/internal",
+      "runtime_mode": "corrected Spring Boot fat JAR",
+      "cds": true,
+      "official_claim": "Phase 32K/32L corrected audit: approximately 2.7 MB median PSS reduction, approximately 1.8 MB median Private_Dirty reduction, 3/3 paired wins",
+      "publication_status": "sanitized summary only"
+    },
+    {
+      "case": "spring-petclinic-customers-service",
+      "source": "public OSS",
+      "runtime_mode": "EXPLODED_BOOT_APP / JarLauncher",
+      "cds": false,
+      "official_claim": "Phase 33M: approximately 4.6 MB median PSS reduction, approximately 4.8 MB median Private_Dirty reduction, approximately 4.6 MB median memory.current reduction, 3/3 paired wins",
+      "runtime_policy": "NO_CDS_LOW_DIRTY with MALLOC_ARENA_MAX=1",
+      "publication_status": "public centerpiece"
+    }
+  ],
+  "do_not_cite_as_final": [
+    "Doctor Phase 32I",
+    "Doctor mistaken -5.9 MB median",
+    "PetClinic fat-JAR full P2 as a win",
+    "PetClinic early false-positive ablation screens",
+    "PetClinic p2-no-spring-core as promoted candidate",
+    "MALLOC_ARENA_MAX=1 as a complete solution by itself"
+  ],
+  "raw_local_evidence_sanitized_paths": [
+    "<workspace>/v3.3/phase31-warmed-production-reprofile/out/",
+    "<workspace>/v3.3/phase32-doctor-service/out/",
+    "<workspace>/v3.3/phase33-petclinic/out/"
+  ],
+  "public_safe_files": [
+    "README.md",
+    "CASE-STUDIES/01-petclinic-public-nocds-case-study.md",
+    "CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md",
+    "CASE-STUDIES/03-patient-service-confirmation-addendum.md",
+    "CASE-STUDIES/04-jmoa-plugin-runtime-hardening-technical-note.md",
+    "EVIDENCE/petclinic/phase33m-summary.md",
+    "EVIDENCE/petclinic/phase33m-final-verdict.md",
+    "EVIDENCE/petclinic/phase33n-evidence-index.md",
+    "EVIDENCE/doctor/phase32m-summary.md",
+    "EVIDENCE/doctor/phase32l-claim-reconciliation.md",
+    "EVIDENCE/patient/phase31-summary.md"
+  ],
+  "manual_review_required": [
+    "private service naming",
+    "local paths",
+    "credentials",
+    "database details",
+    "JWT/security configuration",
+    "raw logs",
+    "generated PDFs before upload"
+  ]
+}

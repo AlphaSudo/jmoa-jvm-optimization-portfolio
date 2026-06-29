@@ -1,0 +1,8 @@
+flowchart LR
+  A["Workload profile"] --> B["Candidate selection"]
+  B --> C["MODE_C bytecode rewrite"]
+  C --> D["PACKAGE_SAM adapter consolidation"]
+  D --> E["Artifact materialization"]
+  E --> F["Runtime-origin verification"]
+  F --> G["PSS / Private_Dirty / cgroup measurement"]
+  G --> H["Claim reconciliation"]

@@ -1,0 +1,17 @@
+# This folder is intended to be publish-safe Markdown and lightweight assets.
+# Keep raw JVM evidence, binaries, and local execution debris out of the
+# portfolio repo.
+
+*.jar
+*.war
+*.ear
+*.class
+*.jsa
+*.hprof
+*.jfr
+*.log
+*.tmp
+
+RAW-EVIDENCE/
+LOCAL-ONLY/
+PRIVATE/

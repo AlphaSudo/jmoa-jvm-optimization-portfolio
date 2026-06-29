@@ -1,0 +1,8 @@
+flowchart TB
+  A["JMOA optimized output"] --> B["Expanded classpath"]
+  A --> C["Spring Boot fat JAR"]
+  A --> D["Exploded Boot app"]
+  B --> E["Patient-service: confirmed CDS win"]
+  C --> F["Doctor-service: confirmed after fat-JAR substitution"]
+  D --> G["PetClinic: confirmed public no-CDS win"]
+  C --> H["PetClinic fat-JAR: negative control"]
