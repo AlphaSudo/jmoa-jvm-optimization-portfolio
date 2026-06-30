@@ -8,6 +8,14 @@ JMOA is a build-time JVM optimization project focused on reducing Spring Boot co
 
 This portfolio summarizes three confirmed case studies across different service shapes and deployment modes, with Spring PetClinic as the public no-CDS centerpiece.
 
+## Source Code
+
+The public JMOA source release lives in a separate repository:
+
+- [AlphaSudo/jmoa](https://github.com/AlphaSudo/jmoa) contains the Maven plugin, runtime library, Spring Boot materialization notes, runtime-origin verification docs, publication-safety scripts, and the PetClinic no-CDS reproduction scaffold.
+
+This repository remains the evidence and case-study portfolio. The source repo is intentionally separate so private HMS evidence can stay sanitized while the public tooling has its own clean build surface.
+
 ## Confirmed Results
 
 | Service | Source | Runtime mode | CDS? | Confirmed result | Status |

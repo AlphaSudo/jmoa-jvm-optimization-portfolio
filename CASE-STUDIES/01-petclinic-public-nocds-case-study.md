@@ -232,6 +232,10 @@ The public-safe reproduction contract is:
 7. Verify sampled runtime class origins.
 8. Measure PSS, Private_Dirty, `memory.current`, heap PSS, loaded classes, startup, and workload errors.
 
+The public source repo includes a PetClinic reproduction scaffold:
+
+- [examples/spring-petclinic-customers-nocds](https://github.com/AlphaSudo/jmoa/tree/main/examples/spring-petclinic-customers-nocds)
+
 Raw local evidence is intentionally not copied into this portfolio; the evidence summary files preserve the accepted metrics and claim boundaries.
 
 ## Final Claim
