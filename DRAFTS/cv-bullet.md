@@ -2,4 +2,4 @@
 
 JMOA — Build-Time JVM Memory Optimizer for Spring Boot
 
-Built a build-time Java bytecode optimization pipeline for Spring Boot services, targeting lambda/adapter consolidation and container memory density. Validated across three services, including public Spring PetClinic microservices, achieving confirmed median PSS reductions of ~4.2 MB, ~2.7 MB, and ~4.6 MB under distinct deployment modes. Implemented Spring Boot fat-JAR/exploded-Boot materialization, PACKAGE_SAM adapter validation, runtime-origin verification, CDS/no-CDS measurement protocols, and PSS/Private_Dirty/cgroup/NMT analysis.
+Built a Java/Maven bytecode optimization and evidence platform that delivered 5-8 MiB median PSS reductions over the previous optimizer across three Spring services. Implemented lambda and classfile-metadata reduction, artifact auditing, Spring Boot materialization, runtime-origin proof, paired validation, smaps/NMT attribution, and service-specific CDS policy selection.

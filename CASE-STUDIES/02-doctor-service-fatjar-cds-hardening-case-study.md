@@ -2,18 +2,26 @@
 
 ## Executive Summary
 
-Doctor-service is the systems debugging case study. It started as an apparent failure, exposed invalid measurement and packaging defects, drove product hardening in JMOA, and ended as a corrected modest memory win.
+Doctor-service is the systems debugging case study. It started as an apparent failure, exposed invalid measurement and packaging defects, drove product hardening in JMOA, and ended with a confirmed raw-reducer win under an artifact-specific fat-JAR/application-CDS protocol.
 
-Final audited result:
+Current V2 audited result:
 
 ```text
-median PSS reduction: ~2.7 MB
-median Private_Dirty reduction: ~1.8 MB
+comparison: corrected D2 vs raw-reduced D2R
+median PSS reduction: 5,156 KB
+median Private_Dirty reduction: 5,212 KB
+median memory.current reduction: 6,975,488 bytes
 paired PSS wins: 3/3
+valid runs: 6/6
 runtime mode: corrected Spring Boot fat JAR
-CDS: per-candidate
+CDS: fresh artifact-specific application archive per variant
 runtime javaagent: absent
 ```
+
+V2-C returned `CONFIRMED_WIN`. V2-D identified anonymous writable and
+mapped-file PSS reduction as primary movement, with class/metaspace changes as
+supporting evidence. The older ~2.7 MB result below remains historical context,
+not the current V2 matrix value.
 
 The important story is not "we got a bigger number." It is:
 

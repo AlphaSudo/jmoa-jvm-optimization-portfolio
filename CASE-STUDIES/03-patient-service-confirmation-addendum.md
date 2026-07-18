@@ -4,9 +4,28 @@
 
 This addendum summarizes the confirmed patient-service win without exposing private/internal source details. Patient-service is the first JMOA service win and remains the baseline internal case.
 
-## Official Claim
+## Current V2 Claim
 
-Official production claim:
+```text
+comparison: accepted Patient V1 vs corrected V2
+runtime mode: corrected Spring Boot fat JAR
+policy: JDK_BASE_CDS_LOW_DIRTY
+application archive: absent
+paired wins: 3/3
+valid runs: 6/6
+median PSS: -8,279 KB
+median Private_Dirty: -8,444 KB
+median memory.current: -8,523,776 bytes
+```
+
+Both arms mapped the same stock JDK base archive bytes. V2-C returned
+`CONFIRMED_WIN`; V2-D ranked heap page-touch reduction first. Patient no-CDS is
+also independently confirmed at -8,903 KB median PSS. Dynamic Patient
+application CDS remains blocked.
+
+## Historical V1 Claim
+
+The earlier V1-era production claim is retained as project history:
 
 ```text
 Phase 31D-P2

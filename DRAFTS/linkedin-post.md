@@ -1,13 +1,17 @@
 # LinkedIn Post Draft
 
-I have published v1 of my JVM optimization portfolio: JMOA, a build-time Spring Boot memory optimization project.
+I have published JMOA V2, an evidence-driven build-time JVM footprint optimizer for Spring Boot.
 
-The work validates JMOA across three service shapes:
+V2 delivered confirmed incremental median PSS reductions over V1 across three service surfaces:
 
-- internal Spring Boot service with CDS/AppCDS-style runtime: ~4.2 MB median memory reduction
-- internal fat-JAR/CDS service after plugin/runtime hardening: ~2.7 MB median PSS reduction
-- public Spring PetClinic `customers-service` with no CDS/AppCDS/Leyden: ~4.6 MB median PSS reduction under the project's real exploded Boot / `JarLauncher` deployment
+- Spring PetClinic customers-service, no-CDS low-dirty policy: -6,012 KB
+- Doctor service, application CDS: -5,156 KB
+- Patient service, stock JDK base-CDS low-dirty policy: -8,279 KB
 
-The biggest lesson: JVM memory optimization is not just bytecode rewriting. Candidate selection, artifact materialization, classloader visibility, runtime policy, and PSS/Private_Dirty measurement all decide whether fewer classes become lower container memory.
+Every result used three paired runs, six valid runs, zero workload errors, V2-C evidence validation, and V2-D memory attribution. The runtime policy was selected per service; JMOA does not claim that one CDS mode wins everywhere.
 
-Repo: https://github.com/AlphaSudo/jmoa-jvm-optimization-portfolio
+The engineering lesson was bigger than bytecode rewriting. A credible JVM optimizer also needs artifact auditing, Spring Boot materialization, runtime-origin proof, measurement validation, negative-result retention, and memory attribution.
+
+Source: https://github.com/AlphaSudo/jmoa
+
+Case studies: https://github.com/AlphaSudo/jmoa-jvm-optimization-portfolio
