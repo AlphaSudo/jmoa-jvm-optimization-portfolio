@@ -2,11 +2,11 @@
   <img src="ASSETS/jmoa-portfolio-hero.png" alt="JMOA build-time JVM memory optimization portfolio overview" width="100%">
 </p>
 
-# JMOA JVM Optimization Portfolio
+# JMOA V2 JVM Optimization Portfolio
 
 JMOA is an evidence-driven, build-time JVM footprint optimization system for Spring Boot. It combines admitted lambda/adapter rewriting, raw dependency metadata reduction, byte-preservation auditing, deployment materialization, runtime-origin proof, paired evidence validation, and memory attribution.
 
-This portfolio summarizes three confirmed case studies across different service shapes and deployment modes, with Spring PetClinic as the public no-CDS centerpiece.
+This portfolio presents the final V2 evidence across three service shapes and deployment modes, with Spring PetClinic as the public reproduction bridge. Earlier Phase 31-33 results remain available as historical V1 evidence and are not the current release matrix.
 
 ## Source Code
 
@@ -20,23 +20,33 @@ This repository remains the evidence and case-study portfolio. The source repo i
 
 | Public reproducibility | Private fat-JAR/CDS | Runtime-policy selection |
 | --- | --- | --- |
-| **PetClinic customers**<br>Exploded Boot, `NO_CDS_LOW_DIRTY`<br>V1 to V2: **-6,012 KB median PSS**, 2/3 wins<br>[Case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md) | **Doctor service**<br>Corrected fat JAR, application CDS<br>D2 to D2R: **-5,156 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md) | **Patient service**<br>Corrected fat JAR, stock JDK base CDS<br>V1 to V2: **-8,279 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md) |
+| **PetClinic customers**<br>Exploded Boot, `NO_CDS_LOW_DIRTY`<br>V1 to V2: **-6,012 KB median PSS**, 2/3 wins<br>[Case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md) | **Doctor service**<br>Corrected fat JAR, `APPLICATION_CDS`<br>D2 to D2R: **-5,156 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md) | **Patient service**<br>Corrected fat JAR, `JDK_BASE_CDS_LOW_DIRTY`<br>V1 to V2: **-8,279 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md) |
 
 All three final comparisons have 6/6 valid runs, zero workload errors, V2-C `CONFIRMED_WIN`, and V2-D attribution. Patient no-CDS is also independently confirmed at -8,903 KB median PSS. Dynamic Patient application CDS remains rejected for the tested single-replica deployment.
 
 These are protocol-specific results. They do not establish universal benefit from CDS, no-CDS, a packaging shape, or one allocator policy.
 
+<p align="center">
+  <img src="ASSETS/charts/median-pss-savings.png" alt="Final V2 median PSS reduction over accepted V1 artifacts: PetClinic 5.9 MiB, Doctor 5.0 MiB, and Patient 8.1 MiB" width="92%">
+</p>
+
+[Open the one-page V2 summary](ASSETS/portfolio-summary.pdf) or inspect the
+[machine-readable final matrix](EVIDENCE/v2-final/three-service-matrix.json).
+
 ## What JMOA Does
 
 JMOA analyzes Java bytecode and workload profiles, identifies lambda and adapter patterns with favorable memory ROI, rewrites selected sites at build time, and materializes optimized artifacts for the target runtime shape.
 
-The work here focuses on:
+V2 covers:
 
 - MODE_C bytecode optimization
 - PACKAGE_SAM adapter consolidation
+- raw dependency LVT/LVTT metadata reduction
+- normalized non-target byte-preservation auditing
 - Spring Boot fat-JAR and exploded-Boot materialization
 - Runtime-origin verification
-- CDS and no-CDS measurement protocols
+- service-specific no-CDS, stock base-CDS, and application-CDS protocols
+- paired evidence validation and memory attribution
 - Container memory measurement with PSS, Private_Dirty, cgroup `memory.current`, NMT, class histograms, and smaps
 
 <p align="center">
@@ -119,4 +129,4 @@ The README publishes rendered images because they are easier to scan on GitHub a
 
 ## Evidence
 
-Publish-safe summaries are under [EVIDENCE](EVIDENCE/). Raw local experiment outputs are intentionally not copied into this portfolio because they may contain local paths, bulky artifacts, or private environment details.
+The [final V2 evidence matrix](EVIDENCE/v2-final/three-service-matrix.md) is the current claim source. Earlier Phase 31-33 summaries are retained under [EVIDENCE](EVIDENCE/) as explicitly historical records. Raw local experiment outputs are intentionally excluded because they may contain local paths, bulky artifacts, or private environment details.

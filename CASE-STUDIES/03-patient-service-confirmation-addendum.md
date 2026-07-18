@@ -102,9 +102,9 @@ Stable invariants:
 
 This proved correctness safety under the fixed plugin, but it was not a new full patient memory remeasurement.
 
-## Claim Integrity
+## Historical Claim Integrity
 
-Use:
+For V1 history, use:
 
 ```text
 Patient-service official claim is Phase 31D-P2: ~4.2-4.4 MB median memory reduction, 9/9 individual wins.
@@ -123,14 +123,22 @@ Phase 31E replaces the official Phase 31D-P2 claim.
 The fixed-plugin smoke is a new memory confirmation.
 ```
 
-## Final Claim
+## Current V2 Claim
 
-Patient-service confirms JMOA C2 as an internal expanded-classpath/CDS win:
+Patient-service V2 is confirmed over the accepted V1 artifact under the same
+stock JDK base-CDS policy:
 
 ```text
-~4.2-4.4 MB official median memory reduction
-9/9 individual memory wins
+8,279 KB median PSS reduction
+8,444 KB median Private_Dirty reduction
+8,523,776 byte median memory.current reduction
+3/3 paired wins
+6/6 valid runs
+zero workload errors
 no runtime javaagent
-per-candidate CDS archives
-startup tradeoff documented
+V2-C CONFIRMED_WIN; V2-D attribution present
 ```
+
+Patient no-CDS is independently confirmed at -8,903 KB median PSS. Dynamic
+Patient application CDS remains blocked and must not be conflated with the
+stock JDK base archive used by the primary result.

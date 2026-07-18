@@ -1,68 +1,63 @@
-# JMOA Portfolio One-Page Summary
+# JMOA V2 Portfolio One-Page Summary
 
-## JMOA: Build-Time JVM Memory Optimization For Spring Boot
+## Evidence-Driven JVM Footprint Optimization For Spring Boot
 
-JMOA is a build-time Java bytecode optimization project for Spring Boot services. It targets selected lambda and adapter patterns before runtime, then verifies that the optimized artifact is actually loaded under the intended deployment mode.
+JMOA combines build-time lambda/adapter transformation, raw dependency
+classfile-metadata reduction, artifact auditing, Spring Boot materialization,
+runtime-origin proof, paired evidence validation, and memory attribution.
 
-## Problem
+## Final V2 Result
 
-Spring Boot container memory is affected by more than Java heap size. Lambda bytecode, adapter classes, class metadata, Spring Boot packaging, classloader visibility, CDS/no-CDS mode, allocator behavior, and runtime launch shape can all affect PSS and Private_Dirty.
+| Service | Deployment and policy | Median PSS, V1 to V2 | Wins |
+| --- | --- | ---: | ---: |
+| PetClinic customers | Exploded Boot, `NO_CDS_LOW_DIRTY` | -6,012 KB | 2/3 |
+| Doctor | Fat JAR, `APPLICATION_CDS` | -5,156 KB | 3/3 |
+| Patient | Fat JAR, `JDK_BASE_CDS_LOW_DIRTY` | -8,279 KB | 3/3 |
 
-## Approach
+All three comparisons have 6/6 valid runs, zero workload errors, V2-C
+`CONFIRMED_WIN`, and V2-D attribution.
 
-```text
-profile workload
--> select candidate sites
--> rewrite bytecode at build time
--> consolidate PACKAGE_SAM adapters
--> materialize runtime artifact
--> verify runtime origins
--> measure PSS / Private_Dirty / memory.current
-```
-
-## Confirmed Results
-
-| Service | Mode | Result |
-| --- | --- | ---: |
-| Patient-service | expanded classpath + CDS | ~4.2-4.4 MB median memory reduction |
-| Doctor-service | corrected fat JAR + CDS | ~2.7 MB median PSS reduction |
-| Spring PetClinic `customers-service` | exploded Boot + no-CDS | ~4.6 MB median PSS reduction |
-
-## Public Centerpiece
-
-Spring PetClinic `customers-service`:
-
-- public open-source service
-- no CDS/AppCDS/Leyden
-- no runtime javaagent
-- real exploded Boot / `JarLauncher` deployment
-- `MALLOC_ARENA_MAX=1`
-- runtime origins verified
-- 3/3 paired wins
-
-## Key Technical Lesson
-
-JMOA is not only a bytecode optimizer. It is a JVM deployment optimizer.
-
-The confirmed PetClinic win required:
+## Engineering Pipeline
 
 ```text
-candidate selection
-+ bytecode correctness
-+ adapter placement
-+ artifact materialization
-+ actual deployment-shape alignment
-+ runtime policy
-+ runtime-origin verification
-+ paired measurement
+analyze artifact and workload
+-> admit bounded candidates
+-> transform bytecode at build time
+-> audit non-target classfile structures
+-> materialize the real Spring Boot deployment
+-> prove artifact identity and runtime origins
+-> execute the semantic workload
+-> run paired confirmation
+-> validate evidence and attribute memory movement
 ```
 
-## Skills Demonstrated
+## Runtime Policy Is Part Of The Product
 
-- JVM memory analysis
-- Java bytecode rewriting
-- Spring Boot packaging internals
-- CDS/no-CDS validation
-- PSS, Private_Dirty, cgroup, NMT, smaps analysis
-- runtime class-origin verification
-- rigorous claim reconciliation
+- PetClinic: no-CDS confirmed.
+- Doctor: application CDS confirmed with artifact-specific archives.
+- Patient: stock JDK base CDS confirmed; no-CDS also independently confirmed.
+- Patient dynamic application CDS: rejected for the tested deployment.
+
+JMOA does not claim that one CDS mode, launch shape, or allocator policy is
+universally optimal.
+
+## Why The Evidence Is Credible
+
+- PSS and Private_Dirty are primary process-memory metrics.
+- `memory.current`, NMT, smaps regions, heap, histograms, classes, and metaspace
+  support attribution.
+- Single runs are screens; final claims use three balanced pairs.
+- Invalid runs and losing pairs remain visible.
+- Runtime javaagents are absent from final service claims.
+- Negative candidates are rejected rather than promoted from artifact savings.
+
+## Public Reproduction Bridge
+
+Spring PetClinic customers-service is the public reference: clean-clone build
+and semantic-smoke workflow, exploded Boot / `JarLauncher`, no CDS/AppCDS/
+Leyden, and no runtime javaagent. Frozen measurement inputs remain explicit
+prerequisites rather than hidden release assets.
+
+Source: https://github.com/AlphaSudo/jmoa
+
+Portfolio: https://github.com/AlphaSudo/jmoa-jvm-optimization-portfolio

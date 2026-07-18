@@ -1,4 +1,6 @@
-# PetClinic Phase 33M Summary
+# Historical V1 Evidence: PetClinic Phase 33M Summary
+
+This is the original full-P2 confirmation, not the final V1-to-V2 matrix row.
 
 ## Status
 

@@ -1,4 +1,7 @@
-# Doctor-Service Phase 32M Summary
+# Historical V1 Evidence: Doctor-Service Phase 32M Summary
+
+This file preserves the corrected V1-era Doctor result. The current V2 release
+result is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Status
 

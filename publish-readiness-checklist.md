@@ -1,50 +1,44 @@
-# Publish Readiness Checklist
+# V2 Portfolio Readiness Checklist
 
-Generated: 2026-06-28
+Updated: 2026-07-18
 
-## Automated Draft Status
+## Current Release Surface
 
-- [x] README exists and includes results table.
-- [x] PetClinic public no-CDS case study exists.
-- [x] Doctor case study exists and uses corrected ~2.7 MB claim.
-- [x] Patient addendum exists and separates 31D-P2 from 31E.
-- [x] Plugin/runtime hardening technical note exists.
-- [x] Evidence inventory exists.
-- [x] Evidence summaries exist.
-- [x] Claim guardrails are documented.
-- [x] LinkedIn draft exists.
-- [x] CV bullet draft exists.
-- [x] Job application paragraph draft exists.
-- [x] README uses rendered, watermark-free visuals.
-- [x] Mermaid sources are kept for diagram maintenance.
-
-## Human Review Required
-
-- [ ] Confirm all private/internal service descriptions are acceptable.
-- [ ] Confirm no credentials or internal URLs are present.
-- [ ] Confirm no private patient/doctor data is present.
-- [ ] Decide license or publication note.
-- [x] Decide whether to publish diagrams as Mermaid, rendered images, or both: publish rendered images, keep Mermaid sources.
-- [x] Add actual GitHub repo URL to LinkedIn draft.
-- [ ] Review generated PDF if/when exported.
+- [x] README leads with the final V1-to-V2 matrix.
+- [x] PetClinic, Doctor, and Patient cards use current V2 medians.
+- [x] Patient stock base CDS is distinct from dynamic application CDS.
+- [x] Historical Phase 31-33 evidence is labeled as V1 history.
+- [x] Source repository and stable V2 release are linked.
+- [x] CV, application, and LinkedIn drafts use scoped V2 claims.
+- [x] Rendered hero, chart, runtime-policy diagram, PDF, and preview use V2 data.
+- [x] Mermaid sources remain beside rendered diagrams.
 
 ## Claim Audit
 
-- [x] Doctor -5.9 MB is not cited as final.
-- [x] Doctor Phase 32I is not cited as final.
-- [x] Patient 31D-P2 and 31E are not mixed.
-- [x] PetClinic claim says no-CDS.
-- [x] PetClinic claim says exploded Boot / `JarLauncher`.
-- [x] PetClinic claim includes `MALLOC_ARENA_MAX=1`.
-- [x] PetClinic fat-JAR result is described as a failure/negative control, not final.
-- [x] JMOA is not described as always winning.
+- [x] PetClinic: `NO_CDS_LOW_DIRTY`, -6,012 KB PSS, 2/3 wins.
+- [x] Doctor: `APPLICATION_CDS`, -5,156 KB PSS, 3/3 wins.
+- [x] Patient: `JDK_BASE_CDS_LOW_DIRTY`, -8,279 KB PSS, 3/3 wins.
+- [x] Every final row states 6/6 valid runs and zero workload errors.
+- [x] V2-C confirmation and V2-D attribution are visible.
+- [x] Patient no-CDS remains separate secondary evidence.
+- [x] Dynamic Patient application CDS remains rejected.
+- [x] Old Doctor -5.9 MB and Phase 32I results are not current claims.
+- [x] PetClinic fat-JAR and other negative results are not promoted.
+- [x] No universal memory, startup, CDS, or deployment-shape claim is made.
 
-## Recommended Publish Order
+## Automated Checks
 
-1. Review this portfolio folder locally.
-2. Create a public GitHub repo named `jmoa-jvm-optimization-portfolio`.
-3. Copy or push this folder as the repo root.
-4. Publish README and PetClinic case first.
-5. Add Doctor and Patient sanitized case studies.
-6. Post short LinkedIn summary with repo link.
-7. Update CV/project section.
+- [x] Local Markdown links pass.
+- [x] JSON files parse.
+- [x] README, final matrix, summary, inventories, and drafts agree.
+- [x] Release-facing stale V1 wording scan passes.
+- [x] Publication-safety scan passes.
+- [x] PDF renders without clipping or overlap.
+- [x] `git diff --check` passes.
+
+## Human-Owned Follow-Up
+
+- [ ] Review private-service wording before each external application.
+- [ ] Publish the prepared LinkedIn post.
+- [ ] Add one quantified JMOA bullet to the CV.
+- [ ] Never upload private Doctor/Patient raw captures.

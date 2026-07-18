@@ -1,4 +1,7 @@
-# PetClinic Phase 33N Evidence Index
+# Historical V1 Evidence: PetClinic Phase 33N Evidence Index
+
+This index preserves the original full-P2 evidence chain. The current V2
+matrix is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Evidence Chain
 

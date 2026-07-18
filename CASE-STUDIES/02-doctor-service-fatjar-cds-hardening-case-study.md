@@ -160,11 +160,11 @@ After fat-JAR substitution and adapter placement fixes:
 - no runtime javaagent was present
 - no CNF/NCDF classloading errors occurred
 
-## Corrected Final Measurement
+## Historical V1 Corrected Measurement
 
 The initial script reported a mistaken -5.9 MB median because it selected the wrong array element. Phase 32L audited the data and corrected the median.
 
-Correct final Doctor claim:
+Correct historical Doctor claim:
 
 | Metric | Result |
 | --- | ---: |
@@ -175,7 +175,8 @@ Correct final Doctor claim:
 | Workload errors | 0 |
 | Runtime javaagent | absent |
 
-The corrected number is smaller than the mistaken one, but it is the number that should be published.
+The corrected number is smaller than the mistaken one. It remains the V1
+historical record, not the final V2 D2-to-D2R matrix value.
 
 ## Lessons For JVM Productization
 
@@ -188,15 +189,21 @@ Doctor-service hardened JMOA in ways that matter beyond one benchmark:
 5. Statistical audits matter as much as bytecode audits.
 6. Smaller honest claims are stronger than inflated invalid claims.
 
-## Final Claim
+## Current V2 Claim
 
-Doctor-service D2-fixed is a confirmed modest memory win under corrected Spring Boot fat-JAR/CDS deployment:
+Doctor-service raw-reduced D2R is confirmed over corrected D2 under the same
+Spring Boot fat-JAR/application-CDS protocol:
 
 ```text
-~2.7 MB median PSS reduction
-~1.8 MB median Private_Dirty reduction
+5,156 KB median PSS reduction
+5,212 KB median Private_Dirty reduction
+6,975,488 byte median memory.current reduction
 3/3 paired wins
-after fat-JAR substitution and PACKAGE_SAM adapter placement fixes
+6/6 valid runs
+zero workload errors
+V2-C CONFIRMED_WIN; V2-D attribution present
 ```
 
-Do not cite Phase 32I or the mistaken -5.9 MB median as final.
+The application CDS archive was trained separately for each artifact. Do not
+cite Phase 32I, the mistaken -5.9 MB median, or the older ~2.7 MB V1 result as
+the current V2 claim.

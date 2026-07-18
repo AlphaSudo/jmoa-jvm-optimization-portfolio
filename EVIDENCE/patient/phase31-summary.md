@@ -1,4 +1,7 @@
-# Patient-Service Phase 31 Summary
+# Historical V1 Evidence: Patient-Service Phase 31 Summary
+
+This file preserves the original V1-era Patient evidence. The current V2
+release result is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Status
 

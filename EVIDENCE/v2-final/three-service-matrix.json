@@ -1,0 +1,51 @@
+{
+  "metadataVersion": "jmoa-v2-portfolio-matrix-v1",
+  "comparison": "accepted V1 artifact to final V2 artifact",
+  "status": "READY_FOR_V2_FINAL",
+  "services": [
+    {
+      "service": "petclinic-customers",
+      "deployment": "EXPLODED_BOOT_APP",
+      "runtimePolicy": "NO_CDS_LOW_DIRTY",
+      "validRuns": 6,
+      "pairedWins": 2,
+      "pairs": 3,
+      "medianPssDeltaKb": -6012,
+      "medianPrivateDirtyDeltaKb": -5708,
+      "medianMemoryCurrentDeltaBytes": -8081408,
+      "workloadErrors": 0,
+      "v2cVerdict": "CONFIRMED_WIN",
+      "v2dAttributionPresent": true
+    },
+    {
+      "service": "doctor",
+      "deployment": "SPRING_BOOT_FAT_JAR",
+      "runtimePolicy": "APPLICATION_CDS",
+      "validRuns": 6,
+      "pairedWins": 3,
+      "pairs": 3,
+      "medianPssDeltaKb": -5156,
+      "medianPrivateDirtyDeltaKb": -5212,
+      "medianMemoryCurrentDeltaBytes": -6975488,
+      "workloadErrors": 0,
+      "v2cVerdict": "CONFIRMED_WIN",
+      "v2dAttributionPresent": true
+    },
+    {
+      "service": "patient",
+      "deployment": "SPRING_BOOT_FAT_JAR",
+      "runtimePolicy": "JDK_BASE_CDS_LOW_DIRTY",
+      "validRuns": 6,
+      "pairedWins": 3,
+      "pairs": 3,
+      "medianPssDeltaKb": -8279,
+      "medianPrivateDirtyDeltaKb": -8444,
+      "medianMemoryCurrentDeltaBytes": -8523776,
+      "workloadErrors": 0,
+      "v2cVerdict": "CONFIRMED_WIN",
+      "v2dAttributionPresent": true,
+      "noCdsPolicyAlsoConfirmed": true,
+      "dynamicApplicationCdsVerdict": "BLOCK_RUNTIME_PROMOTION"
+    }
+  ]
+}

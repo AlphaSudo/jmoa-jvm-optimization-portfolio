@@ -1,4 +1,7 @@
-# PetClinic Phase 33M Final Verdict
+# Historical V1 Evidence: PetClinic Phase 33M Final Verdict
+
+This verdict remains the public V1 foundation. The current incremental V2
+result is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Verdict
 

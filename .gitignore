@@ -12,6 +12,11 @@
 *.log
 *.tmp
 
+# Local build and renderer scratch.
+target/
+__pycache__/
+*.pyc
+
 # Local scratch render kept out of the published repo.
 ASSETS/diagrams/runtime-modes.png
 

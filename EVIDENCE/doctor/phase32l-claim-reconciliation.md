@@ -1,4 +1,7 @@
-# Doctor Phase 32L Claim Reconciliation
+# Historical V1 Evidence: Doctor Phase 32L Claim Reconciliation
+
+This reconciliation remains relevant to the V1 audit trail. It is not the
+current V2 D2-to-D2R result.
 
 ## Final Claim
 

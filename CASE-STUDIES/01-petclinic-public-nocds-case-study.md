@@ -246,12 +246,18 @@ The public-safe reproduction contract is:
 7. Verify sampled runtime class origins.
 8. Measure PSS, Private_Dirty, `memory.current`, heap PSS, loaded classes, startup, and workload errors.
 
-The public source repo includes a PetClinic reproduction scaffold:
+The public source repo includes the clean-clone-qualified PetClinic build and
+semantic-smoke workflow. Frozen profile/admission inputs remain explicit
+external prerequisites for the measurement workflow:
 
 - [examples/spring-petclinic-customers-nocds](https://github.com/AlphaSudo/jmoa/tree/main/examples/spring-petclinic-customers-nocds)
 
 Raw local evidence is intentionally not copied into this portfolio; the evidence summary files preserve the accepted metrics and claim boundaries.
 
-## Final Claim
+## Historical V1 Foundation
 
 JMOA full P2 achieved a confirmed public open-source no-CDS memory win on Spring PetClinic `customers-service` under the project's actual exploded Boot deployment shape, with median PSS -4.6 MB, Private_Dirty -4.8 MB, and cgroup `memory.current` -4.6 MB across 3 paired confirmation runs.
+
+The current release claim is the finalized V1-to-V2 comparison at the top of
+this document: -6,012 KB median PSS with 2/3 paired wins, 6/6 valid runs, zero
+workload errors, V2-C confirmation, and V2-D attribution.
