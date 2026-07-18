@@ -2,9 +2,23 @@
 
 ## Executive Summary
 
+Current V2 release result:
+
+| Metric | Finalized V1 to V2 median delta |
+| --- | ---: |
+| PSS | -6,012 KB |
+| Private_Dirty | -5,708 KB |
+| cgroup `memory.current` | -8,081,408 bytes |
+| paired wins | 2/3 |
+| valid runs | 6/6 |
+| workload errors | 0 |
+
+V2-C returned `CONFIRMED_WIN` and V2-D attribution is present. This is the
+current reproducible release claim.
+
 JMOA full P2 produced a confirmed non-CDS memory win on the public Spring PetClinic microservices `customers-service` when the optimized artifact was materialized into the project's real exploded Spring Boot / `JarLauncher` deployment shape and run with the `NO_CDS_LOW_DIRTY` runtime policy.
 
-Final Phase 33M result:
+Historical full-P2 Phase 33M result:
 
 | Metric | Median delta |
 | --- | ---: |

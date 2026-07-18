@@ -4,7 +4,7 @@
 
 # JMOA JVM Optimization Portfolio
 
-JMOA is a build-time JVM optimization project focused on reducing Spring Boot container memory by rewriting selected lambda and adapter patterns before runtime. The central finding is practical: JVM memory optimization is not only a bytecode problem. Artifact packaging, classloader visibility, CDS/no-CDS mode, runtime policy, and measurement discipline decide whether fewer classes become lower PSS and Private_Dirty.
+JMOA is an evidence-driven, build-time JVM footprint optimization system for Spring Boot. It combines admitted lambda/adapter rewriting, raw dependency metadata reduction, byte-preservation auditing, deployment materialization, runtime-origin proof, paired evidence validation, and memory attribution.
 
 This portfolio summarizes three confirmed case studies across different service shapes and deployment modes, with Spring PetClinic as the public no-CDS centerpiece.
 
@@ -12,23 +12,19 @@ This portfolio summarizes three confirmed case studies across different service 
 
 The public JMOA source release lives in a separate repository:
 
-- [AlphaSudo/jmoa](https://github.com/AlphaSudo/jmoa) contains the Maven plugin, runtime library, Spring Boot materialization notes, runtime-origin verification docs, publication-safety scripts, and the PetClinic no-CDS reproduction scaffold.
+- [AlphaSudo/jmoa](https://github.com/AlphaSudo/jmoa) contains the Maven plugin, runtime library, materialization and origin-proof tooling, evidence/attribution engines, and the clean-clone-qualified PetClinic build and semantic-smoke workflow.
 
 This repository remains the evidence and case-study portfolio. The source repo is intentionally separate so private HMS evidence can stay sanitized while the public tooling has its own clean build surface.
 
-## Confirmed Results
+## V2 Case Studies
 
-| Service | Source | Runtime mode | CDS? | Confirmed result | Status |
-| --- | --- | --- | --- | --- | --- |
-| Patient-service | private/internal | expanded classpath | yes | ~4.2-4.4 MB median memory reduction | confirmed |
-| Doctor-service | private/internal | corrected Spring Boot fat JAR | yes | ~2.7 MB median PSS reduction | confirmed |
-| Spring PetClinic `customers-service` | public OSS | exploded Boot / `JarLauncher` | no | ~4.6 MB median PSS reduction | confirmed |
+| Public reproducibility | Private fat-JAR/CDS | Runtime-policy selection |
+| --- | --- | --- |
+| **PetClinic customers**<br>Exploded Boot, `NO_CDS_LOW_DIRTY`<br>V1 to V2: **-6,012 KB median PSS**, 2/3 wins<br>[Case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md) | **Doctor service**<br>Corrected fat JAR, application CDS<br>D2 to D2R: **-5,156 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md) | **Patient service**<br>Corrected fat JAR, stock JDK base CDS<br>V1 to V2: **-8,279 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md) |
 
-<p align="center">
-  <img src="ASSETS/charts/median-pss-savings.png" alt="Confirmed median memory savings across Patient, Doctor, and PetClinic services" width="92%">
-</p>
+All three final comparisons have 6/6 valid runs, zero workload errors, V2-C `CONFIRMED_WIN`, and V2-D attribution. Patient no-CDS is also independently confirmed at -8,903 KB median PSS. Dynamic Patient application CDS remains rejected for the tested single-replica deployment.
 
-The PetClinic result is deliberately phrased narrowly: it is a public open-source, non-CDS win under the project's real exploded Boot deployment shape with a low-dirty no-CDS runtime policy. The same candidate was not a final win under the artificial fat-JAR measurement shape.
+These are protocol-specific results. They do not establish universal benefit from CDS, no-CDS, a packaging shape, or one allocator policy.
 
 ## What JMOA Does
 
@@ -53,7 +49,7 @@ Runtime javaagents are useful for diagnostics, but they complicate production me
 
 That matters because the memory claim should belong to the optimized artifact and deployment shape, not to a live instrumentation layer.
 
-## Case Studies
+## Detailed Records
 
 - [Spring PetClinic public no-CDS case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md)
 - [Doctor-service fat-JAR/CDS hardening case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md)
@@ -101,10 +97,11 @@ The README publishes rendered images because they are easier to scan on GitHub a
 
 ## Claim Integrity Rules
 
-- Do not cite invalid Doctor Phase 32I as a final result.
-- Do not cite the mistaken Doctor -5.9 MB median; the audited result is ~2.7 MB.
-- Do not mix Patient Phase 31D-P2 official medians with Phase 31E independent evidence.
-- Do not claim PetClinic wins under fat-JAR mode.
+- Do not cite invalid Doctor Phase 32I or old portfolio medians as V2 results.
+- Use Doctor D2-to-D2R `-5,156 KB`, not the superseded V1-era `~2.7 MB` figure.
+- Use Patient stock-base-CDS `-8,279 KB` for the primary final matrix; keep its independent no-CDS result separate.
+- Do not describe Patient stock base CDS as Patient application CDS.
+- Do not transfer PetClinic's exploded-Boot result to fat-JAR mode.
 - Do not claim `MALLOC_ARENA_MAX=1` alone solved PetClinic no-CDS memory.
 - Do not claim JMOA always wins.
 
