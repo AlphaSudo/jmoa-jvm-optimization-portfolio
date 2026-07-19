@@ -1,0 +1,45 @@
+{
+  "comparison": "NO_JMOA_B0_TO_FINAL_JMOA_V2",
+  "overallState": "ONE_SERVICE_PRODUCT_WIN",
+  "substantialProductWins": 1,
+  "evaluatedServices": 3,
+  "services": [
+    {
+      "service": "doctor-service",
+      "runtimePolicy": "APPLICATION_CDS",
+      "status": "CONFIRMED_WIN",
+      "validRuns": 6,
+      "pairedWins": 3,
+      "pairs": 3,
+      "medianPssDeltaKb": -5809,
+      "medianPrivateDirtyDeltaKb": -5492,
+      "medianMemoryCurrentDeltaBytes": -11845632,
+      "workloadErrors": 0
+    },
+    {
+      "service": "petclinic-customers",
+      "runtimePolicy": "NO_CDS_LOW_DIRTY",
+      "status": "SCREEN_FAILED",
+      "validRuns": 2,
+      "pairedWins": 0,
+      "pairs": 1,
+      "medianPssDeltaKb": 5446,
+      "medianPrivateDirtyDeltaKb": 5580,
+      "medianMemoryCurrentDeltaBytes": 3059712,
+      "workloadErrors": 0
+    },
+    {
+      "service": "patient-service",
+      "runtimePolicy": "JDK_BASE_CDS_LOW_DIRTY",
+      "status": "SCREEN_FAILED",
+      "validRuns": 2,
+      "pairedWins": 0,
+      "pairs": 1,
+      "medianPssDeltaKb": 3290,
+      "medianPrivateDirtyDeltaKb": 3336,
+      "medianMemoryCurrentDeltaBytes": 3244032,
+      "workloadErrors": 0
+    }
+  ],
+  "claimBoundary": "Direct measurements only. Screens are not confirmations and evolution medians are not arithmetically combined."
+}

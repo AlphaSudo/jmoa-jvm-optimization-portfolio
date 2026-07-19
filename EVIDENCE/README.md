@@ -2,11 +2,14 @@
 
 ## Current V2 Release Evidence
 
+- [Direct no-JMOA product matrix](v2-final/direct-product-matrix.md)
+- [Machine-readable direct matrix](v2-final/direct-product-matrix.json)
 - [Final three-service matrix](v2-final/three-service-matrix.md)
 - [Machine-readable final matrix](v2-final/three-service-matrix.json)
 
-The V2 matrix compares each accepted V1 artifact with the final V2 artifact
-under a frozen, service-specific runtime policy.
+The direct matrix answers the buyer question: clean no-JMOA `B0` versus final
+V2. The three-service matrix separately compares each accepted V1 artifact
+with final V2 under a frozen service-specific runtime policy.
 
 ## Historical V1 Evidence
 

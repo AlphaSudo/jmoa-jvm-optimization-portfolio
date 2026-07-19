@@ -6,7 +6,7 @@
 
 JMOA is an evidence-driven, build-time JVM footprint optimization system for Spring Boot. It combines admitted lambda/adapter rewriting, raw dependency metadata reduction, byte-preservation auditing, deployment materialization, runtime-origin proof, paired evidence validation, and memory attribution.
 
-This portfolio presents the final V2 evidence across three service shapes and deployment modes, with Spring PetClinic as the public reproduction bridge. Earlier Phase 31-33 results remain available as historical V1 evidence and are not the current release matrix.
+This portfolio presents both the direct no-JMOA product result and the separate V1-to-V2 engineering-evolution result across three service shapes. Spring PetClinic remains the public reproduction bridge; Doctor is the only service that cleared the final direct substantial-win gate.
 
 ## Source Code
 
@@ -16,13 +16,34 @@ The public JMOA source release lives in a separate repository:
 
 This repository remains the evidence and case-study portfolio. The source repo is intentionally separate so private HMS evidence can stay sanitized while the public tooling has its own clean build surface.
 
-## V2 Case Studies
+## Direct Product Verdict
+
+The buyer-facing comparison is clean no-JMOA `B0` versus final JMOA V2.
+
+| Service | Frozen protocol | Direct result | Verdict |
+| --- | --- | ---: | --- |
+| **Doctor service** | Fat JAR, artifact-specific application CDS | **-5,809 KB median PSS**, 3/3 wins | Confirmed substantial win |
+| **PetClinic customers** | Exploded Boot, `NO_CDS_LOW_DIRTY` | +5,446 KB PSS | Screen failed |
+| **Patient service** | Fat JAR, stock JDK base CDS | +3,290 KB PSS on corrected screen | Screen failed |
+
+Overall state: `ONE_SERVICE_PRODUCT_WIN`. This proves a material direct result
+on one service, not a universal memory win. The two losing screens are retained
+because evidence-gated rejection is part of the product.
+
+<p align="center">
+  <img src="ASSETS/charts/direct-product-pss.png" alt="Direct clean no-JMOA to final V2 PSS comparison: Doctor reduced 5,809 KB; PetClinic and Patient regressed at screen" width="92%">
+</p>
+
+[Read the direct matrix](EVIDENCE/v2-final/direct-product-matrix.md) or inspect
+the [machine-readable record](EVIDENCE/v2-final/direct-product-matrix.json).
+
+## V1 To V2 Engineering Evolution
 
 | Public reproducibility | Private fat-JAR/CDS | Runtime-policy selection |
 | --- | --- | --- |
 | **PetClinic customers**<br>Exploded Boot, `NO_CDS_LOW_DIRTY`<br>V1 to V2: **-6,012 KB median PSS**, 2/3 wins<br>[Case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md) | **Doctor service**<br>Corrected fat JAR, `APPLICATION_CDS`<br>D2 to D2R: **-5,156 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md) | **Patient service**<br>Corrected fat JAR, `JDK_BASE_CDS_LOW_DIRTY`<br>V1 to V2: **-8,279 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md) |
 
-All three final comparisons have 6/6 valid runs, zero workload errors, V2-C `CONFIRMED_WIN`, and V2-D attribution. Patient no-CDS is also independently confirmed at -8,903 KB median PSS. Dynamic Patient application CDS remains rejected for the tested single-replica deployment.
+All three evolution comparisons have 6/6 valid runs, zero workload errors, V2-C `CONFIRMED_WIN`, and V2-D attribution. They show how V2 improved accepted V1 artifacts; they are not added to earlier baseline-to-V1 medians. Patient no-CDS is also independently confirmed at -8,903 KB median PSS. Dynamic Patient application CDS remains rejected for the tested single-replica deployment.
 
 These are protocol-specific results. They do not establish universal benefit from CDS, no-CDS, a packaging shape, or one allocator policy.
 
@@ -30,8 +51,8 @@ These are protocol-specific results. They do not establish universal benefit fro
   <img src="ASSETS/charts/median-pss-savings.png" alt="Final V2 median PSS reduction over accepted V1 artifacts: PetClinic 5.9 MiB, Doctor 5.0 MiB, and Patient 8.1 MiB" width="92%">
 </p>
 
-[Open the one-page V2 summary](ASSETS/portfolio-summary.pdf) or inspect the
-[machine-readable final matrix](EVIDENCE/v2-final/three-service-matrix.json).
+[Open the one-page V1-to-V2 summary](ASSETS/portfolio-summary.pdf) or inspect the
+[machine-readable evolution matrix](EVIDENCE/v2-final/three-service-matrix.json).
 
 ## What JMOA Does
 
@@ -107,6 +128,10 @@ The README publishes rendered images because they are easier to scan on GitHub a
 
 ## Claim Integrity Rules
 
+- Lead adoption claims with the clean no-JMOA direct matrix: one confirmed
+  Doctor win, with PetClinic and Patient screen failures.
+- Keep the successful three-service V1-to-V2 matrix labeled as engineering
+  evolution; never add its medians to older baseline-to-V1 results.
 - Do not cite invalid Doctor Phase 32I or old portfolio medians as V2 results.
 - Use Doctor D2-to-D2R `-5,156 KB`, not the superseded V1-era `~2.7 MB` figure.
 - Use Patient stock-base-CDS `-8,279 KB` for the primary final matrix; keep its independent no-CDS result separate.
@@ -129,4 +154,4 @@ The README publishes rendered images because they are easier to scan on GitHub a
 
 ## Evidence
 
-The [final V2 evidence matrix](EVIDENCE/v2-final/three-service-matrix.md) is the current claim source. Earlier Phase 31-33 summaries are retained under [EVIDENCE](EVIDENCE/) as explicitly historical records. Raw local experiment outputs are intentionally excluded because they may contain local paths, bulky artifacts, or private environment details.
+The [direct product matrix](EVIDENCE/v2-final/direct-product-matrix.md) is the current adoption claim source. The [V1-to-V2 matrix](EVIDENCE/v2-final/three-service-matrix.md) is the engineering-evolution source. Earlier Phase 31-33 summaries are retained under [EVIDENCE](EVIDENCE/) as explicitly historical records. Raw local experiment outputs are intentionally excluded because they may contain local paths, bulky artifacts, or private environment details.
