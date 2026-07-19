@@ -6,7 +6,7 @@
 
 JMOA is an evidence-driven, build-time JVM footprint optimization system for Spring Boot. It combines admitted lambda/adapter rewriting, raw dependency metadata reduction, byte-preservation auditing, deployment materialization, runtime-origin proof, paired evidence validation, and memory attribution.
 
-This portfolio presents both the direct no-JMOA product result and the separate V1-to-V2 engineering-evolution result across three service shapes. Spring PetClinic remains the public reproduction bridge; Doctor is the only service that cleared the final direct substantial-win gate.
+This portfolio presents both the direct no-JMOA measurements and the separate V1-to-V2 engineering-evolution result across three service shapes. The direct aggregate verdict is under runtime-equivalence reconciliation; the V1-to-V2 evidence remains confirmed.
 
 ## Source Code
 
@@ -16,19 +16,25 @@ The public JMOA source release lives in a separate repository:
 
 This repository remains the evidence and case-study portfolio. The source repo is intentionally separate so private HMS evidence can stay sanitized while the public tooling has its own clean build surface.
 
-## Direct Product Verdict
+## Direct Product Reconciliation
 
-The buyer-facing comparison is clean no-JMOA `B0` versus final JMOA V2.
+The direct clean no-JMOA `B0` versus final V2 measurements are retained, but
+the aggregate state is `DIRECT_PRODUCT_MATRIX_UNDER_RECONCILIATION` while
+historical runtime commands, source/dependency lineage, and same-artifact
+variance are audited.
 
 | Service | Frozen protocol | Direct result | Verdict |
 | --- | --- | ---: | --- |
-| **Doctor service** | Fat JAR, artifact-specific application CDS | **-5,809 KB median PSS**, 3/3 wins | Confirmed substantial win |
-| **PetClinic customers** | Exploded Boot, `NO_CDS_LOW_DIRTY` | +5,446 KB PSS | Screen failed |
-| **Patient service** | Fat JAR, stock JDK base CDS | +3,290 KB PSS on corrected screen | Screen failed |
+| **Doctor service** | Fat JAR, artifact-specific application CDS | **-5,809 KB median PSS**, 3/3 wins | Confirmed; coherent lineage proved, variance qualification open |
+| **PetClinic customers** | Exploded Boot, `NO_CDS_LOW_DIRTY` | +5,446 KB PSS | Screen regressed; frozen historical replay reversed to 0/3 |
+| **Patient service** | Fat JAR, stock JDK base CDS | +3,290 KB PSS for attempted candidate | Attempted SHA differs from accepted corrected V2 |
 
-Overall state: `ONE_SERVICE_PRODUCT_WIN`. This proves a material direct result
-on one service, not a universal memory win. The two losing screens are retained
-because evidence-gated rejection is part of the product.
+The earlier `ONE_SERVICE_PRODUCT_WIN` aggregate is provisional. Doctor keeps
+its confirmed measured result. PetClinic's losing screen remains valid and its
+frozen Phase 33M replay now records runtime drift. Patient's screens remain
+valid only for candidate `FB4E...`; the accepted corrected V2 is `4CFC...`.
+No historical baseline claim has been restored, and no three-arm campaign was
+run after the replay and variance qualification gates failed.
 
 <p align="center">
   <img src="ASSETS/charts/direct-product-pss.png" alt="Direct clean no-JMOA to final V2 PSS comparison: Doctor reduced 5,809 KB; PetClinic and Patient regressed at screen" width="92%">
@@ -36,6 +42,8 @@ because evidence-gated rejection is part of the product.
 
 [Read the direct matrix](EVIDENCE/v2-final/direct-product-matrix.md) or inspect
 the [machine-readable record](EVIDENCE/v2-final/direct-product-matrix.json).
+The [runtime-equivalence investigation](EVIDENCE/v2-final/runtime-equivalence-investigation.md)
+records why the campaign stopped.
 
 ## V1 To V2 Engineering Evolution
 

@@ -1,6 +1,7 @@
 {
   "comparison": "NO_JMOA_B0_TO_FINAL_JMOA_V2",
-  "overallState": "ONE_SERVICE_PRODUCT_WIN",
+  "overallState": "DIRECT_PRODUCT_MATRIX_UNDER_RECONCILIATION",
+  "previousProvisionalState": "ONE_SERVICE_PRODUCT_WIN",
   "substantialProductWins": 1,
   "evaluatedServices": 3,
   "services": [
@@ -19,7 +20,7 @@
     {
       "service": "petclinic-customers",
       "runtimePolicy": "NO_CDS_LOW_DIRTY",
-      "status": "SCREEN_FAILED",
+      "status": "HISTORICAL_RUNTIME_DRIFT",
       "validRuns": 2,
       "pairedWins": 0,
       "pairs": 1,
@@ -31,15 +32,25 @@
     {
       "service": "patient-service",
       "runtimePolicy": "JDK_BASE_CDS_LOW_DIRTY",
-      "status": "SCREEN_FAILED",
+      "status": "SCREEN_ARTIFACT_MISMATCH",
       "validRuns": 2,
       "pairedWins": 0,
       "pairs": 1,
       "medianPssDeltaKb": 3290,
       "medianPrivateDirtyDeltaKb": 3336,
       "medianMemoryCurrentDeltaBytes": 3244032,
-      "workloadErrors": 0
+      "workloadErrors": 0,
+      "attemptedCandidateSha256": "FB4E6295364EC564AEEC1123F5D72EB8C7C4C5A47B677C57909EFEA2E678618C",
+      "acceptedV2Sha256": "4CFC40ADBD559066071A65BAC4A0D6836411BDBF4BB69E9162C0D2E7C65569E3"
     }
   ],
-  "claimBoundary": "Direct measurements only. Screens are not confirmations and evolution medians are not arithmetically combined."
+  "reconciliation": {
+    "threeArmCampaignExecuted": false,
+    "blockReasons": [
+      "PETCLINIC_HISTORICAL_RUNTIME_DRIFT",
+      "SAME_ARTIFACT_NOISE_NOT_QUALIFIED",
+      "PATIENT_DIRECT_SCREEN_ARTIFACT_MISMATCH"
+    ]
+  },
+  "claimBoundary": "Direct measurements are retained; no reconciled aggregate verdict is permitted until runtime replay and dedicated same-artifact variance gates pass."
 }

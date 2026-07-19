@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "jmoa-runtime-equivalence-investigation-v1",
+  "status": "RECONCILIATION_GATES_BLOCKED",
+  "threeArmCampaignExecuted": false,
+  "services": {
+    "petclinic": {
+      "lineage": "PASS",
+      "historicalReplay": "HISTORICAL_RUNTIME_DRIFT",
+      "originalPairedWins": 3,
+      "replayPairedWins": 0,
+      "originalMedianPssDeltaKb": -4758,
+      "replayMedianPssDeltaKb": 8647
+    },
+    "doctor": {
+      "lineage": "PASS",
+      "directResult": "CONFIRMED_3_OF_3",
+      "medianPssDeltaKb": -5809,
+      "retrospectiveNoiseGate": "FAIL"
+    },
+    "patient": {
+      "lineage": "PASS",
+      "directScreen": "ARTIFACT_MISMATCH",
+      "attemptedCandidateSha256": "FB4E6295364EC564AEEC1123F5D72EB8C7C4C5A47B677C57909EFEA2E678618C",
+      "acceptedV2Sha256": "4CFC40ADBD559066071A65BAC4A0D6836411BDBF4BB69E9162C0D2E7C65569E3",
+      "retrospectiveNoiseGate": "FAIL"
+    }
+  },
+  "claimBoundary": "The direct matrix remains under reconciliation. No new three-arm result exists."
+}
