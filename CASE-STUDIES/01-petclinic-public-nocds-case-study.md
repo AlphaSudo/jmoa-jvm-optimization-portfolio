@@ -2,7 +2,20 @@
 
 ## Executive Summary
 
-Current V2 release result:
+Direct clean no-JMOA to final V2 result:
+
+| Metric | Single-screen delta |
+| --- | ---: |
+| PSS | +5,446 KB |
+| Private_Dirty | +5,580 KB |
+| cgroup `memory.current` | +3,059,712 bytes |
+| workload errors | 0 |
+
+The clean direct screen failed and did not promote to confirmation. The source
+baseline was rebuilt with zero JMOA entries after an older baseline image was
+found to contain `JmoaRuntime.class`.
+
+Separate V1-to-V2 engineering result:
 
 | Metric | Finalized V1 to V2 median delta |
 | --- | ---: |
@@ -13,8 +26,8 @@ Current V2 release result:
 | valid runs | 6/6 |
 | workload errors | 0 |
 
-V2-C returned `CONFIRMED_WIN` and V2-D attribution is present. This is the
-current reproducible release claim.
+V2-C returned `CONFIRMED_WIN` and V2-D attribution is present for the V1-to-V2
+comparison. It is not a clean no-JMOA product claim.
 
 JMOA full P2 produced a confirmed non-CDS memory win on the public Spring PetClinic microservices `customers-service` when the optimized artifact was materialized into the project's real exploded Spring Boot / `JarLauncher` deployment shape and run with the `NO_CDS_LOW_DIRTY` runtime policy.
 

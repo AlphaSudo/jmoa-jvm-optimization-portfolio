@@ -6,6 +6,15 @@ This addendum summarizes the confirmed patient-service win without exposing priv
 
 ## Current V2 Claim
 
+The direct clean no-JMOA-to-final-V2 campaign did not confirm Patient. Both
+bounded screens regressed all three primary metrics; the corrected reverse-order
+screen measured PSS `+3,290 KB`, Private_Dirty `+3,336 KB`, and
+`memory.current` `+3,244,032` bytes with zero workload errors. Both arms mapped
+the identical stock JDK base archive, and the service stopped before
+confirmation.
+
+The following is the separate accepted V1-to-V2 engineering result:
+
 ```text
 comparison: accepted Patient V1 vs corrected V2
 runtime mode: corrected Spring Boot fat JAR
