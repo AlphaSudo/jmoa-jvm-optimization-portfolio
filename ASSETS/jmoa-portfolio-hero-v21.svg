@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
+  <title id="title">JMOA 2.1 PetClinic claimable JVM RAM win</title>
+  <desc id="desc">Portfolio hero showing 14.88 MiB lower process PSS, 16.24 MiB lower cgroup memory, 12 of 12 favorable held-out blocks, and the evidence pipeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111b"/>
+      <stop offset="0.58" stop-color="#0b1723"/>
+      <stop offset="1" stop-color="#071019"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#1eb6d1" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#1eb6d1" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#1eb6d1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2ec5e5"/>
+      <stop offset="1" stop-color="#5be1a3"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#bed0dc" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+    <style>
+      .brand { font: 800 74px 'Segoe UI', Arial, sans-serif; letter-spacing: -3px; fill: #f7fafc; }
+      .version { font: 700 17px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; fill: #07111b; }
+      .eyebrow { font: 700 17px 'Segoe UI', Arial, sans-serif; letter-spacing: 3px; fill: #5ed7ed; }
+      .headline { font: 750 52px 'Segoe UI', Arial, sans-serif; fill: #f7fafc; }
+      .sub { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #a9bac8; }
+      .metric { font: 800 56px 'Segoe UI', Arial, sans-serif; letter-spacing: -2px; fill: #f7fafc; }
+      .metric-label { font: 650 18px 'Segoe UI', Arial, sans-serif; fill: #c4d0d9; }
+      .stat { font: 750 27px 'Segoe UI', Arial, sans-serif; fill: #f7fafc; }
+      .stat-label { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #9fb2c3; }
+      .step { font: 700 15px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #dce7ee; }
+      .footer { font: 600 16px 'Segoe UI', Arial, sans-serif; fill: #adbdc9; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="800" rx="28" fill="url(#bg)"/>
+  <rect width="1600" height="800" rx="28" fill="url(#glow)"/>
+  <rect width="1600" height="800" rx="28" fill="url(#grid)"/>
+  <rect x="0" y="0" width="12" height="800" rx="6" fill="url(#line)"/>
+
+  <g transform="translate(76 62)">
+    <text x="0" y="72" class="brand">JMOA</text>
+    <rect x="211" y="12" width="62" height="62" rx="12" fill="#e63235"/>
+    <rect x="304" y="23" width="134" height="40" rx="20" fill="#5ed7ed"/>
+    <text x="371" y="50" text-anchor="middle" class="version">VERSION 2.1</text>
+  </g>
+
+  <text x="78" y="205" class="eyebrow">SPRING PETCLINIC · DIRECT HELD-OUT EVIDENCE</text>
+  <text x="78" y="274" class="headline">A claimable JVM RAM win.</text>
+  <text x="78" y="314" class="sub">Build-time optimization connected to artifact identity, semantics,</text>
+  <text x="78" y="348" class="sub">Linux memory attribution, and an automatic refusal protocol.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="78" y="397" width="486" height="172" rx="20" fill="#10202d" stroke="#2e4a5c" stroke-width="2"/>
+    <rect x="78" y="397" width="8" height="172" rx="4" fill="#33c7e6"/>
+    <text x="116" y="470" class="metric">−14.88 MiB</text>
+    <text x="118" y="510" class="metric-label">median process PSS · R41F minus B0E</text>
+    <text x="118" y="541" class="stat-label">95% bootstrap interval: −15.73 to −14.70 MiB</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="592" y="397" width="420" height="172" rx="20" fill="#10202d" stroke="#2e4a5c" stroke-width="2"/>
+    <rect x="592" y="397" width="8" height="172" rx="4" fill="#5be1a3"/>
+    <text x="630" y="470" class="metric">−16.24 MiB</text>
+    <text x="632" y="510" class="metric-label">median target-cgroup memory.current</text>
+    <text x="632" y="541" class="stat-label">All RAM, semantic, lifecycle, and cost gates passed</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1040" y="178" width="482" height="391" rx="22" fill="#0f1d29" stroke="#315064" stroke-width="2"/>
+    <text x="1082" y="225" class="eyebrow">EVIDENCE, NOT A SNAPSHOT</text>
+    <line x1="1082" y1="250" x2="1480" y2="250" stroke="#385466" stroke-width="2"/>
+
+    <text x="1082" y="308" class="stat">12 / 12</text>
+    <text x="1082" y="334" class="stat-label">favorable held-out blocks</text>
+    <text x="1300" y="308" class="stat">p = 0.000488</text>
+    <text x="1300" y="334" class="stat-label">exact paired sign test</text>
+
+    <text x="1082" y="405" class="stat">81 / 81</text>
+    <text x="1082" y="431" class="stat-label">campaign sessions</text>
+    <text x="1300" y="405" class="stat">4 arms</text>
+    <text x="1300" y="431" class="stat-label">content × packaging</text>
+
+    <rect x="1082" y="475" width="398" height="58" rx="14" fill="#182a37"/>
+    <text x="1281" y="500" text-anchor="middle" class="metric-label">Packaging-inclusive · service-specific</text>
+    <text x="1281" y="523" text-anchor="middle" class="stat-label">CPU +14.71% · startup +1.652 s · latency 0 ms</text>
+  </g>
+
+  <text x="78" y="634" class="eyebrow">THE CLOSED EVIDENCE LOOP</text>
+  <g transform="translate(78 666)">
+    <rect x="0" y="0" width="244" height="56" rx="14" fill="#142634" stroke="#315064"/>
+    <text x="122" y="35" text-anchor="middle" class="step">PROFILE</text>
+    <path d="M250 28 H282" stroke="#4fd4df" stroke-width="3"/>
+    <path d="M282 28 l-10 -7 v14 z" fill="#4fd4df"/>
+    <rect x="292" y="0" width="244" height="56" rx="14" fill="#142634" stroke="#315064"/>
+    <text x="414" y="35" text-anchor="middle" class="step">TRANSFORM</text>
+    <path d="M542 28 H574" stroke="#4fd4df" stroke-width="3"/>
+    <path d="M574 28 l-10 -7 v14 z" fill="#4fd4df"/>
+    <rect x="584" y="0" width="244" height="56" rx="14" fill="#142634" stroke="#315064"/>
+    <text x="706" y="35" text-anchor="middle" class="step">PROVE</text>
+    <path d="M834 28 H866" stroke="#4fd4df" stroke-width="3"/>
+    <path d="M866 28 l-10 -7 v14 z" fill="#4fd4df"/>
+    <rect x="876" y="0" width="244" height="56" rx="14" fill="#142634" stroke="#315064"/>
+    <text x="998" y="35" text-anchor="middle" class="step">MEASURE</text>
+    <path d="M1126 28 H1158" stroke="#4fd4df" stroke-width="3"/>
+    <path d="M1158 28 l-10 -7 v14 z" fill="#4fd4df"/>
+    <rect x="1168" y="0" width="276" height="56" rx="14" fill="#12332e" stroke="#3e7f69"/>
+    <text x="1306" y="35" text-anchor="middle" class="step">PUBLISH OR REJECT</text>
+  </g>
+
+  <text x="78" y="765" class="footer">JVM bytecode · Spring Boot packaging · Linux PSS / cgroup memory · frozen inference · explicit tradeoffs</text>
+</svg>
