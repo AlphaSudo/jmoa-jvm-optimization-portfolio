@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="ASSETS/jmoa-portfolio-hero.png" alt="JMOA JVM footprint optimization portfolio" width="100%">
+  <img src="ASSETS/jmoa-portfolio-hero-v21.svg" alt="JMOA 2.1 PetClinic result: 14.88 MiB lower process PSS, 16.24 MiB lower target-cgroup memory, and 12 of 12 favorable held-out blocks" width="100%">
 </p>
 
 # JMOA 2.1 JVM Optimization Portfolio
