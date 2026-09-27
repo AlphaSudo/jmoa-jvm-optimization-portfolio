@@ -1,0 +1,38 @@
+{
+  "release": "2.1.0",
+  "service": "spring-petclinic-customers-service",
+  "terminal": "T7R23_R487_SCALE_DIRECT_RAM_WIN",
+  "claimable": true,
+  "comparison": "R41F_MINUS_STRICT_NO_JMOA_B0E",
+  "packagingInclusive": true,
+  "execution": {
+    "attemptedSessions": 81,
+    "completedSessions": 81,
+    "heldoutBlocks": 12,
+    "predecessorObservationsReused": 0
+  },
+  "processPssKiB": {
+    "median": -15241.5,
+    "favorableBlocks": 12,
+    "exactSignP": 0.00048828125,
+    "bootstrap95": [-16109.5, -15052.5]
+  },
+  "memoryCurrentBytes": {
+    "median": -17033216.0,
+    "favorableBlocks": 12,
+    "bootstrap95": [-17842176.0, -16713728.0]
+  },
+  "cost": {
+    "lifecycleCpuMedianPercent": 14.70730303365912,
+    "startupMedianMillis": 1652.0,
+    "latencyMedianDeltaMillis": 0.0,
+    "latencyP95DeltaMillis": 0.0
+  },
+  "factorial": {
+    "packagingMainMedianPssKiB": -12715.25,
+    "contentMainMedianPssKiB": -2465.0,
+    "interactionMedianPssKiB": 3801.5
+  },
+  "acceptedArtifactSha256": "415217CE9926ECA2BC0052800DD456291D438A9C63589CBFE5A55238BE71EB9F",
+  "sourceResultSha256": "62FBF441A94DF3DDED6366D2BBC18F28AB45246AFC13E13E7C0BBBC126185A45"
+}

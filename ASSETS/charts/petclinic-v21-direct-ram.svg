@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">JMOA 2.1 Spring PetClinic direct RAM result</title>
+  <desc id="desc">Horizontal bars show median memory reduction for process PSS, Private Dirty, and cgroup memory.current. All three are approximately fifteen to sixteen MiB, with bootstrap 95 percent confidence intervals.</desc>
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+  <text x="90" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="48" font-weight="700" fill="#12243a">JMOA 2.1 · Spring PetClinic direct RAM result</text>
+  <text x="90" y="140" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#52677f">Exact R41F JMOA fat-JAR minus documented strict no-JMOA B0 exploded Boot</text>
+
+  <g stroke="#d9e1ea" stroke-width="2">
+    <line x1="410" y1="205" x2="410" y2="670"/>
+    <line x1="630" y1="205" x2="630" y2="670"/>
+    <line x1="850" y1="205" x2="850" y2="670"/>
+    <line x1="1070" y1="205" x2="1070" y2="670"/>
+    <line x1="1290" y1="205" x2="1290" y2="670"/>
+    <line x1="1510" y1="205" x2="1510" y2="670"/>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="19" fill="#52677f" text-anchor="middle">
+    <text x="410" y="705">0</text>
+    <text x="630" y="705">4</text>
+    <text x="850" y="705">8</text>
+    <text x="1070" y="705">12</text>
+    <text x="1290" y="705">16</text>
+    <text x="1510" y="705">20 MiB</text>
+  </g>
+
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="600" fill="#243a52" text-anchor="end">
+    <text x="375" y="299">Process PSS</text>
+    <text x="375" y="449">Private Dirty</text>
+    <text x="375" y="599">cgroup memory.current</text>
+  </g>
+
+  <rect x="410" y="250" width="818.4" height="70" rx="8" fill="#147d64"/>
+  <rect x="410" y="400" width="819.2" height="70" rx="8" fill="#239a7b"/>
+  <rect x="410" y="550" width="893.2" height="70" rx="8" fill="#2f6fbd"/>
+
+  <g stroke="#182433" stroke-width="4">
+    <line x1="1218.5" y1="285" x2="1275.2" y2="285"/>
+    <line x1="1218.5" y1="273" x2="1218.5" y2="297"/>
+    <line x1="1275.2" y1="273" x2="1275.2" y2="297"/>
+    <line x1="1209.2" y1="435" x2="1272.9" y2="435"/>
+    <line x1="1209.2" y1="423" x2="1209.2" y2="447"/>
+    <line x1="1272.9" y1="423" x2="1272.9" y2="447"/>
+    <line x1="1286.7" y1="585" x2="1346.0" y2="585"/>
+    <line x1="1286.7" y1="573" x2="1286.7" y2="597"/>
+    <line x1="1346.0" y1="573" x2="1346.0" y2="597"/>
+  </g>
+
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="700" fill="#182433">
+    <text x="1300" y="299">14.88 MiB</text>
+    <text x="1300" y="449">14.89 MiB</text>
+    <text x="1370" y="599">16.24 MiB</text>
+  </g>
+
+  <text x="960" y="755" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#52677f" text-anchor="middle">Median memory reduction; whiskers are bootstrap 95% intervals</text>
+  <text x="90" y="815" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="700" fill="#147d64">12/12 held-out blocks favored R41F · exact p = 0.000488 · 81/81 sessions complete</text>
+  <text x="90" y="855" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#52677f">Packaging-inclusive result · median lifecycle CPU tradeoff: +14.71%</text>
+</svg>
