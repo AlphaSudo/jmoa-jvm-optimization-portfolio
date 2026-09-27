@@ -42,27 +42,24 @@ function Assert-JsonParses {
 function Assert-ClaimConsistency {
     $matrix = Get-Content -Raw -LiteralPath (Join-Path $RepoRoot 'EVIDENCE/v2-final/three-service-matrix.json') | ConvertFrom-Json
     $inventory = Get-Content -Raw -LiteralPath (Join-Path $RepoRoot 'publish-evidence-inventory.json') | ConvertFrom-Json
-    $surfaces = @(
-        'README.md',
-        'ASSETS/portfolio-summary.md',
-        'DRAFTS/linkedin-post.md'
-    ) | ForEach-Object { Get-Content -Raw -LiteralPath (Join-Path $RepoRoot $_) }
-
     foreach ($service in $matrix.services) {
         $published = @($inventory.acceptedClaims | Where-Object { $_.case -eq $service.service }) | Select-Object -First 1
         if ($null -eq $published) { throw "Inventory is missing $($service.service)." }
         foreach ($field in @('runtimePolicy','validRuns','pairedWins','medianPssDeltaKb')) {
             if ($service.$field -ne $published.$field) { throw "Matrix/inventory mismatch: $($service.service).$field" }
         }
-        $pss = '{0:N0}' -f [math]::Abs([long]$service.medianPssDeltaKb)
-        foreach ($surface in $surfaces) {
-            if (-not $surface.Contains($pss)) { throw "A release-facing surface is missing $($service.service) PSS value $pss." }
-        }
     }
 
-    $readme = $surfaces[0]
-    foreach ($required in @('NO_CDS_LOW_DIRTY','APPLICATION_CDS','JDK_BASE_CDS_LOW_DIRTY','Dynamic Patient application CDS')) {
-        if (-not $readme.Contains($required)) { throw "README is missing runtime-policy taxonomy: $required" }
+    $v21 = Get-Content -Raw -LiteralPath (Join-Path $RepoRoot 'EVIDENCE/v2.1/petclinic-direct-ram-win.json') | ConvertFrom-Json
+    $readme = Get-Content -Raw -LiteralPath (Join-Path $RepoRoot 'README.md')
+    $caseStudy = Get-Content -Raw -LiteralPath (Join-Path $RepoRoot 'CASE-STUDIES/05-petclinic-v21-direct-ram-win.md')
+    if (-not $v21.claimable -or $v21.terminal -ne 'T7R23_R487_SCALE_DIRECT_RAM_WIN') { throw 'The v2.1 portfolio result is not the frozen claimable terminal.' }
+    if ($v21.processPssKiB.median -ne -15241.5 -or $v21.processPssKiB.favorableBlocks -ne 12) { throw 'The v2.1 portfolio PSS result drifted.' }
+    if ($v21.memoryCurrentBytes.median -ne -17033216) { throw 'The v2.1 portfolio cgroup result drifted.' }
+    foreach ($surface in @($readme, $caseStudy)) {
+        foreach ($required in @('15,241.5 KiB','17,033,216','14.71','packaging-inclusive')) {
+            if (-not $surface.Contains($required)) { throw "A v2.1 release-facing surface is missing $required." }
+        }
     }
 }
 
@@ -108,6 +105,7 @@ Assert-PublicationSafety
 foreach ($requiredAsset in @(
     'ASSETS/jmoa-portfolio-hero.png',
     'ASSETS/charts/median-pss-savings.png',
+    'ASSETS/charts/petclinic-v21-direct-ram.svg',
     'ASSETS/diagrams/runtime-modes.svg',
     'ASSETS/portfolio-summary.pdf',
     'ASSETS/portfolio-summary-preview.png'

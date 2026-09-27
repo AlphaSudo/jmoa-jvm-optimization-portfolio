@@ -63,9 +63,13 @@ The primary R41F-minus-B0E process-PSS median was -15,241.5 KiB, with
 95% interval was [-16,109.5, -15,052.5] KiB. `memory.current` corroborated the
 result at -17,033,216 bytes median.
 
+Median lifecycle CPU increased **14.71%** and startup increased 1.652 seconds;
+both remained inside the prospectively frozen product-cost limits. Median and
+p95 request latency changes were 0 ms.
+
 The factorial matters. Packaging contributed the dominant -12,715.25 KiB main
 effect; content contributed -2,465 KiB; their interaction was +3,801.5 KiB.
-The result is therefore a claim about the exact JMOA deployment—not a claim
+The result is therefore a **packaging-inclusive** claim about the exact JMOA deployment—not a claim
 that metadata removal alone saved 15 MiB.
 
 Native process-heap PSS increased 2,972 KiB even while total PSS fell. That
