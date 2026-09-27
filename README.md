@@ -1,165 +1,144 @@
 <p align="center">
-  <img src="ASSETS/jmoa-portfolio-hero.png" alt="JMOA build-time JVM memory optimization portfolio overview" width="100%">
+  <img src="ASSETS/jmoa-portfolio-hero.png" alt="JMOA JVM footprint optimization portfolio" width="100%">
 </p>
 
-# JMOA V2 JVM Optimization Portfolio
+# JMOA 2.1 JVM Optimization Portfolio
 
-JMOA is an evidence-driven, build-time JVM footprint optimization system for Spring Boot. It combines admitted lambda/adapter rewriting, raw dependency metadata reduction, byte-preservation auditing, deployment materialization, runtime-origin proof, paired evidence validation, and memory attribution.
+JMOA is an evidence-gated, build-time JVM footprint optimization system for
+Spring Boot. It connects bytecode transformation to the deployment and
+measurement layers required to prove that a service actually uses less RAM.
 
-This portfolio presents both the direct no-JMOA measurements and the separate V1-to-V2 engineering-evolution result across three service shapes. The direct aggregate verdict is under runtime-equivalence reconciliation; the V1-to-V2 evidence remains confirmed.
+[Source](https://github.com/AlphaSudo/jmoa) ·
+[JMOA 2.1 release](https://github.com/AlphaSudo/jmoa/releases/tag/v2.1.0) ·
+[Technical paper](https://github.com/AlphaSudo/jmoa/blob/main/docs/paper/jmoa-v2.1-petclinic-memory-engineering.md) ·
+[PetClinic evidence](EVIDENCE/v2.1/petclinic-direct-ram-win.md)
 
-## Source Code
+## Published PetClinic result
 
-The public JMOA source release lives in a separate repository:
+The exact accepted **R41F JMOA fat-JAR deployment** reduced Spring PetClinic
+customers-service memory relative to the documented strict **no-JMOA B0
+exploded-Boot deployment**:
 
-- [AlphaSudo/jmoa](https://github.com/AlphaSudo/jmoa) contains the Maven plugin, runtime library, materialization and origin-proof tooling, evidence/attribution engines, and the clean-clone-qualified PetClinic build and semantic-smoke workflow.
-
-This repository remains the evidence and case-study portfolio. The source repo is intentionally separate so private HMS evidence can stay sanitized while the public tooling has its own clean build surface.
-
-## Direct Product Reconciliation
-
-The direct clean no-JMOA `B0` versus final V2 measurements are retained, but
-the aggregate state is `DIRECT_PRODUCT_MATRIX_UNDER_RECONCILIATION` while
-historical runtime commands, source/dependency lineage, and same-artifact
-variance are audited.
-
-| Service | Frozen protocol | Direct result | Verdict |
-| --- | --- | ---: | --- |
-| **Doctor service** | Fat JAR, artifact-specific application CDS | **-5,809 KB median PSS**, 3/3 wins | Confirmed; coherent lineage proved, variance qualification open |
-| **PetClinic customers** | Exploded Boot, `NO_CDS_LOW_DIRTY` | +5,446 KB PSS | Screen regressed; frozen historical replay reversed to 0/3 |
-| **Patient service** | Fat JAR, stock JDK base CDS | +3,290 KB PSS for attempted candidate | Attempted SHA differs from accepted corrected V2 |
-
-The earlier `ONE_SERVICE_PRODUCT_WIN` aggregate is provisional. Doctor keeps
-its confirmed measured result. PetClinic's losing screen remains valid and its
-frozen Phase 33M replay now records runtime drift. Patient's screens remain
-valid only for candidate `FB4E...`; the accepted corrected V2 is `4CFC...`.
-No historical baseline claim has been restored, and no three-arm campaign was
-run after the replay and variance qualification gates failed.
+| Metric | R41F - B0E | Held-out evidence |
+| --- | ---: | --- |
+| Process PSS | **-15,241.5 KiB (-14.88 MiB)** | 12/12 favorable; 95% CI [-16,109.5, -15,052.5] KiB |
+| Target-cgroup `memory.current` | **-17,033,216 B (-16.24 MiB)** | 12/12 favorable; 95% CI [-17,842,176, -16,713,728] B |
+| Private Dirty | **-15,252 KiB** | 12/12 favorable |
+| Cgroup anonymous memory | **-15,616,000 B** | 12/12 favorable |
+| Cgroup file memory | **-411,648 B** | 12/12 favorable |
+| Exact paired sign test | **p = 0.00048828125** | Frozen primary inference |
 
 <p align="center">
-  <img src="ASSETS/charts/direct-product-pss.png" alt="Direct clean no-JMOA to final V2 PSS comparison: Doctor reduced 5,809 KB; PetClinic and Patient regressed at screen" width="92%">
+  <img src="ASSETS/charts/petclinic-v21-direct-ram.svg" alt="PetClinic JMOA 2.1 direct memory reduction with 95 percent bootstrap intervals" width="92%">
 </p>
 
-[Read the direct matrix](EVIDENCE/v2-final/direct-product-matrix.md) or inspect
-the [machine-readable record](EVIDENCE/v2-final/direct-product-matrix.json).
-The [runtime-equivalence investigation](EVIDENCE/v2-final/runtime-equivalence-investigation.md)
-records why the campaign stopped.
+The campaign completed **81/81 sessions**: five qualifications, 20
+same-artifact controls, eight direct-screen observations, and 48 held-out
+four-arm observations. No predecessor observation was reused. Every frozen RAM,
+semantic, lifecycle, and product-cost gate passed.
 
-## V1 To V2 Engineering Evolution
+The tradeoff is public: median lifecycle CPU increased **14.71%** and startup
+increased **1.652 seconds**. Median and p95 request latency changes were both
+0 ms.
 
-| Public reproducibility | Private fat-JAR/CDS | Runtime-policy selection |
-| --- | --- | --- |
-| **PetClinic customers**<br>Exploded Boot, `NO_CDS_LOW_DIRTY`<br>V1 to V2: **-6,012 KB median PSS**, 2/3 wins<br>[Case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md) | **Doctor service**<br>Corrected fat JAR, `APPLICATION_CDS`<br>D2 to D2R: **-5,156 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md) | **Patient service**<br>Corrected fat JAR, `JDK_BASE_CDS_LOW_DIRTY`<br>V1 to V2: **-8,279 KB median PSS**, 3/3 wins<br>[Case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md) |
+This is a **packaging-inclusive, service-specific result**. The factorial
+estimated a -12,715.25 KiB packaging main effect, -2,465 KiB content main
+effect, and +3,801.5 KiB interaction. It would be incorrect to attribute the
+entire 14.88 MiB to metadata reduction alone.
 
-All three evolution comparisons have 6/6 valid runs, zero workload errors, V2-C `CONFIRMED_WIN`, and V2-D attribution. They show how V2 improved accepted V1 artifacts; they are not added to earlier baseline-to-V1 medians. Patient no-CDS is also independently confirmed at -8,903 KB median PSS. Dynamic Patient application CDS remains rejected for the tested single-replica deployment.
+## What JMOA solves
 
-These are protocol-specific results. They do not establish universal benefit from CDS, no-CDS, a packaging shape, or one allocator policy.
+JVM optimization projects commonly break at the boundaries between tools:
 
-<p align="center">
-  <img src="ASSETS/charts/median-pss-savings.png" alt="Final V2 median PSS reduction over accepted V1 artifacts: PetClinic 5.9 MiB, Doctor 5.0 MiB, and Patient 8.1 MiB" width="92%">
-</p>
+- profiles drift from the bytecode being transformed;
+- unsafe or framework-owned sites enter a transformation set;
+- optimized dependencies are not materialized into the final Boot artifact;
+- the JVM loads a stale or unintended class origin;
+- smaller artifacts fail to reduce live memory;
+- a single favorable run is mistaken for a stable result;
+- CPU or startup regressions are omitted from the memory story.
 
-[Open the one-page V1-to-V2 summary](ASSETS/portfolio-summary.pdf) or inspect the
-[machine-readable evolution matrix](EVIDENCE/v2-final/three-service-matrix.json).
+JMOA addresses that entire chain:
 
-## What JMOA Does
+```text
+workload profile
+      → conservative admission
+      → build-time rewriting / audited metadata reduction
+      → classfile byte-preservation proof
+      → Spring Boot deployment materialization
+      → artifact and runtime-origin proof
+      → semantic workload
+      → paired PSS + cgroup confirmation
+      → scoped claim or automatic rejection
+```
 
-JMOA analyzes Java bytecode and workload profiles, identifies lambda and adapter patterns with favorable memory ROI, rewrites selected sites at build time, and materializes optimized artifacts for the target runtime shape.
+## Engineering depth
 
-V2 covers:
+The project exercises several layers of systems engineering:
 
-- MODE_C bytecode optimization
-- PACKAGE_SAM adapter consolidation
-- raw dependency LVT/LVTT metadata reduction
-- normalized non-target byte-preservation auditing
-- Spring Boot fat-JAR and exploded-Boot materialization
-- Runtime-origin verification
-- service-specific no-CDS, stock base-CDS, and application-CDS protocols
-- paired evidence validation and memory attribution
-- Container memory measurement with PSS, Private_Dirty, cgroup `memory.current`, NMT, class histograms, and smaps
+| Area | Work demonstrated |
+| --- | --- |
+| JVM bytecode | ASM-based lambda-site analysis, adapter generation, classfile component hashing, conservative exclusions |
+| Build tooling | Maven plugin goals, profile/coverage contracts, reproducible release artifacts |
+| Spring Boot packaging | Fat-JAR and exploded-Boot materialization, nested dependency replacement, launch-shape proof |
+| Linux memory | `smaps`, PSS, Private Dirty, cgroup v2, page faults, swap/reclaim checks, mapping attribution |
+| JVM diagnostics | NMT, heap/metaspace/code cache, class counts, JIT/GC lifecycle evidence |
+| Experiment design | Same-artifact controls, balanced orders, held-out blocks, frozen gates, exact tests, bootstrap intervals |
+| Reliability | Failure-preserving ledgers, process identity, teardown checks, atomic evidence publication |
+| Communication | Human claims, machine-readable evidence, explicit limitations and adverse tradeoffs |
 
-<p align="center">
-  <img src="ASSETS/diagrams/jmoa-pipeline.png" alt="JMOA product pipeline from workload profiling through runtime-origin verification and PSS measurement" width="100%">
-</p>
+## Why build-time instead of a production javaagent
 
-## Why Build-Time Instead Of Runtime Javaagent
+The profiler is used during training. Accepted services are transformed before
+deployment and run without a JMOA optimization javaagent. This keeps the final
+memory claim attached to the exact artifact and launch shape, rather than to a
+live instrumentation layer that also consumes memory and changes timing.
 
-Runtime javaagents are useful for diagnostics, but they complicate production memory claims. This portfolio uses build-time transformation so the measured process runs without a JMOA runtime javaagent.
+## Safety model
 
-That matters because the memory claim should belong to the optimized artifact and deployment shape, not to a live instrumentation layer.
+- Mutation is opt-in; discovery defaults to report-only.
+- Capturing, serializable, `altMetafactory`, unsupported, and risky framework
+  sites remain unchanged.
+- Signed, sealed, and multi-release dependency JARs are skipped by the raw
+  reducer.
+- Non-target classfile structures must remain byte-equivalent.
+- Intended replacements and runtime origins are hash-bound.
+- Health, workload, linkage, verifier, swap, capture, and teardown failures
+  stop the campaign.
+- Valid losing runs are retained; gates are not relaxed after result exposure.
 
-## Detailed Records
+## Current public scope
 
-- [Spring PetClinic public no-CDS case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md)
-- [Doctor-service fat-JAR/CDS hardening case study](CASE-STUDIES/02-doctor-service-fatjar-cds-hardening-case-study.md)
-- [Patient-service confirmation addendum](CASE-STUDIES/03-patient-service-confirmation-addendum.md)
-- [JMOA plugin and runtime hardening technical note](CASE-STUDIES/04-jmoa-plugin-runtime-hardening-technical-note.md)
+JMOA 2.1 publishes PetClinic as its current direct service example. Additional
+service examples will follow only after independent, service-scoped
+confirmation. Older Doctor and Patient research remains available in this
+portfolio as engineering history; it is not folded into the PetClinic effect
+size and is not advertised as part of the v2.1 claim.
 
-## Key Engineering Lessons
+Detailed records:
 
-1. Candidate selection is necessary but not sufficient.
-2. Build success is not runtime success.
-3. Spring Boot packaging mode can decide whether an optimization wins or loses.
-4. Runtime-origin proof is a product requirement, not a nice-to-have.
-5. PSS and Private_Dirty are more useful than RSS for JVM container memory claims.
-6. CDS and no-CDS are different product modes with different economics.
-7. Invalid measurements are valuable when they expose product invariants.
+- [PetClinic 2.1 direct RAM case study](CASE-STUDIES/05-petclinic-v21-direct-ram-win.md)
+- [Machine-readable PetClinic summary](EVIDENCE/v2.1/petclinic-direct-ram-win.json)
+- [Earlier PetClinic no-CDS case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md)
+- [JMOA plugin/runtime hardening note](CASE-STUDIES/04-jmoa-plugin-runtime-hardening-technical-note.md)
+- [Historical evidence inventory](publish-evidence-inventory.md)
 
-<p align="center">
-  <img src="ASSETS/diagrams/runtime-modes.svg" alt="Runtime shapes used by the JMOA portfolio: expanded classpath, corrected fat JAR, and exploded Boot app" width="100%">
-</p>
+## Source and release
 
-## Measurement Methodology
+The public source lives at [AlphaSudo/jmoa](https://github.com/AlphaSudo/jmoa).
+JMOA 2.1 ships the Maven plugin, Java 17-compatible runtime library, source
+JARs, POMs, manifest, and SHA-256 checksums through GitHub Releases.
 
-Primary memory metrics:
+The source and portfolio are intentionally separate. The source repository is
+the code, architecture, safety, and reproducibility surface. This repository is
+the evidence and engineering narrative.
 
-- smaps PSS
-- smaps Private_Dirty
-- cgroup `memory.current`
+## About the work
 
-Supporting diagnostics:
+This portfolio is aimed at JVM, Java platform, performance, and systems
+engineering roles. It demonstrates ownership from bytecode and build tooling
+through Linux observability, experiment design, root-cause investigation,
+release engineering, and public technical writing.
 
-- Native Memory Tracking
-- `GC.class_histogram`
-- `VM.metaspace`
-- loaded class counts
-- smaps region breakdown
-- startup timing
-- workload error counts
-- dynamic class-load origin logs
-
-The case studies distinguish measured facts from hypotheses. Invalid intermediate phases are documented as lessons but not cited as final wins.
-
-## Diagram Policy
-
-The README publishes rendered images because they are easier to scan on GitHub and in recruiter/reviewer contexts. Mermaid sources are kept beside the rendered assets under [ASSETS](ASSETS/) so the diagrams remain editable and auditable.
-
-## Claim Integrity Rules
-
-- Lead adoption claims with the clean no-JMOA direct matrix: one confirmed
-  Doctor win, with PetClinic and Patient screen failures.
-- Keep the successful three-service V1-to-V2 matrix labeled as engineering
-  evolution; never add its medians to older baseline-to-V1 results.
-- Do not cite invalid Doctor Phase 32I or old portfolio medians as V2 results.
-- Use Doctor D2-to-D2R `-5,156 KB`, not the superseded V1-era `~2.7 MB` figure.
-- Use Patient stock-base-CDS `-8,279 KB` for the primary final matrix; keep its independent no-CDS result separate.
-- Do not describe Patient stock base CDS as Patient application CDS.
-- Do not transfer PetClinic's exploded-Boot result to fat-JAR mode.
-- Do not claim `MALLOC_ARENA_MAX=1` alone solved PetClinic no-CDS memory.
-- Do not claim JMOA always wins.
-
-## Skills Demonstrated
-
-- JVM memory analysis
-- Java bytecode transformation
-- Spring Boot packaging internals
-- AppCDS/CDS and no-CDS runtime measurement
-- Container memory profiling
-- `smaps`, PSS, Private_Dirty, cgroup, and NMT interpretation
-- Runtime class-origin verification
-- Experimental design and claim reconciliation
-- Debugging invalid measurements into product hardening
-
-## Evidence
-
-The [direct product matrix](EVIDENCE/v2-final/direct-product-matrix.md) is the current adoption claim source. The [V1-to-V2 matrix](EVIDENCE/v2-final/three-service-matrix.md) is the engineering-evolution source. Earlier Phase 31-33 summaries are retained under [EVIDENCE](EVIDENCE/) as explicitly historical records. Raw local experiment outputs are intentionally excluded because they may contain local paths, bulky artifacts, or private environment details.
+If that is the kind of engineering problem your team works on, reach out
+through the [AlphaSudo GitHub profile](https://github.com/AlphaSudo).
