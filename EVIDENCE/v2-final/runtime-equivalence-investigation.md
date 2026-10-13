@@ -1,5 +1,9 @@
 # Runtime-Equivalence Investigation
 
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
 Status: `RECONCILIATION_GATES_BLOCKED`.
 
 The direct product matrix was frozen and audited before any new three-arm

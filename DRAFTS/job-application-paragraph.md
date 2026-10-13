@@ -1,3 +1,0 @@
-# Job Application Paragraph
-
-I built JMOA as an evidence-driven JVM optimization system rather than a benchmark-only bytecode transformer. JMOA performs build-time lambda and classfile-metadata optimization, validates non-target byte preservation, materializes transformed dependencies into Spring Boot deployment shapes, proves runtime artifact origin, and gates claims through paired PSS, Private_Dirty, cgroup, NMT, and class-histogram evidence. V2 delivered confirmed incremental median PSS reductions of 5,156-8,279 KB over V1 across three service surfaces while demonstrating that runtime policy must be selected per service rather than assumed universally. I would be excited to bring this kind of JVM/runtime performance work to your team.

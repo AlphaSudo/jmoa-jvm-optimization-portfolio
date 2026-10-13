@@ -1,63 +1,34 @@
-# JMOA V2 Portfolio One-Page Summary
+# JMOA: current portfolio summary
 
-## Evidence-Driven JVM Footprint Optimization For Spring Boot
+## Evidence-gated JVM footprint engineering
 
-JMOA combines build-time lambda/adapter transformation, raw dependency
-classfile-metadata reduction, artifact auditing, Spring Boot materialization,
-runtime-origin proof, paired evidence validation, and memory attribution.
+JMOA combines representative profiling, bounded lambda/adapter transformation,
+audited classfile metadata reduction, Spring Boot materialization, runtime-origin
+proof, semantic workloads and paired Linux memory evidence.
 
-## Final V2 Result
+| Publication | Observation | Qualification |
+| --- | --- | --- |
+| Stable 2.1 PetClinic | 14.88 MiB lower process PSS; 16.24 MiB lower target-cgroup RAM | 12 held-out blocks; accepted packaging-inclusive deployment result; lifecycle CPU +14.71%, startup +1.652 s within frozen gates |
+| Provisional 2.15 Patient | 8.38 MiB lower median stopped PSS; conditional lower bound 8.19 MiB | 12 paired Java 26/Leyden blocks; original calibration failed with approved post-observation exception; performance bounds unqualified or failed |
 
-| Service | Deployment and policy | Median PSS, V1 to V2 | Wins |
-| --- | --- | ---: | ---: |
-| PetClinic customers | Exploded Boot, `NO_CDS_LOW_DIRTY` | -6,012 KB | 2/3 |
-| Doctor | Fat JAR, `APPLICATION_CDS` | -5,156 KB | 3/3 |
-| Patient | Fat JAR, `JDK_BASE_CDS_LOW_DIRTY` | -8,279 KB | 3/3 |
+Patient startup/cache warmth and production/uploaded-binary parity remain
+unqualified. JMOA 2.15 publishes evidence only, with no new Maven binaries;
+stable plugin/runtime coordinates remain 2.1.0. These are distinct service and
+runtime studies, not a version-improvement comparison.
 
-All three comparisons have 6/6 valid runs, zero workload errors, V2-C
-`CONFIRMED_WIN`, and V2-D attribution.
+## Engineering demonstrated
 
-## Engineering Pipeline
+- JVM bytecode analysis, conservative admission, adapter generation and validation.
+- Raw LVT/LVTT reduction with non-target preservation and signed/MR/sealed exclusions.
+- Fat-JAR/exploded-Boot materialization, SHA-256 lineage and loaded-origin proof.
+- smaps/PSS, cgroup v2, NMT, heap, class/metaspace, JIT and fault investigation.
+- Frozen paired designs, controls, held-out confirmation, failed-attempt accounting.
+- Explicit cost, calibration, observability and reproducibility limitations.
 
-```text
-analyze artifact and workload
--> admit bounded candidates
--> transform bytecode at build time
--> audit non-target classfile structures
--> materialize the real Spring Boot deployment
--> prove artifact identity and runtime origins
--> execute the semantic workload
--> run paired confirmation
--> validate evidence and attribute memory movement
-```
+The PetClinic build/smoke workflow needs frozen input prerequisites and does
+not alone reproduce the memory campaign. Private Patient raw source and
+measurements are not distributed. See the [evidence index](../EVIDENCE/README.md).
 
-## Runtime Policy Is Part Of The Product
-
-- PetClinic: no-CDS confirmed.
-- Doctor: application CDS confirmed with artifact-specific archives.
-- Patient: stock JDK base CDS confirmed; no-CDS also independently confirmed.
-- Patient dynamic application CDS: rejected for the tested deployment.
-
-JMOA does not claim that one CDS mode, launch shape, or allocator policy is
-universally optimal.
-
-## Why The Evidence Is Credible
-
-- PSS and Private_Dirty are primary process-memory metrics.
-- `memory.current`, NMT, smaps regions, heap, histograms, classes, and metaspace
-  support attribution.
-- Single runs are screens; final claims use three balanced pairs.
-- Invalid runs and losing pairs remain visible.
-- Runtime javaagents are absent from final service claims.
-- Negative candidates are rejected rather than promoted from artifact savings.
-
-## Public Reproduction Bridge
-
-Spring PetClinic customers-service is the public reference: clean-clone build
-and semantic-smoke workflow, exploded Boot / `JarLauncher`, no CDS/AppCDS/
-Leyden, and no runtime javaagent. Frozen measurement inputs remain explicit
-prerequisites rather than hidden release assets.
-
-Source: https://github.com/AlphaSudo/jmoa
-
-Portfolio: https://github.com/AlphaSudo/jmoa-jvm-optimization-portfolio
+- [Stable 2.1 release](https://github.com/AlphaSudo/jmoa/releases/tag/v2.1.0)
+- [Provisional 2.15 release](https://github.com/AlphaSudo/jmoa/releases/tag/v2.15)
+- [Source repository](https://github.com/AlphaSudo/jmoa)

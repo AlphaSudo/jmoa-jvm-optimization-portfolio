@@ -1,6 +1,10 @@
 # Historical V1 Evidence: PetClinic Phase 33N Evidence Index
 
-This index preserves the original full-P2 evidence chain. The current V2
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
+This index preserves the original full-P2 evidence chain. The historical V2
 matrix is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Evidence Chain

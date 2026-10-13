@@ -1,10 +1,16 @@
 # Doctor-Service Fat-JAR/CDS Hardening Case Study
 
+**Historical engineering case.** Numbers and verdicts below describe their
+original experiments. The current publications are the [accepted 2.1 PetClinic
+result](05-petclinic-v21-direct-ram-win.md) and [provisional 2.15 Patient
+benchmark](03-patient-service-confirmation-addendum.md). These historical
+comparisons are not added to or substituted for current release effects.
+
 ## Executive Summary
 
 Doctor-service is the systems debugging case study. It started as an apparent failure, exposed invalid measurement and packaging defects, drove product hardening in JMOA, and ended with a confirmed raw-reducer win under an artifact-specific fat-JAR/application-CDS protocol.
 
-Direct clean no-JMOA to final V2 result:
+Historical direct clean no-JMOA to final V2 result:
 
 ```text
 median PSS reduction: 5,809 KB
@@ -38,7 +44,7 @@ runtime javaagent: absent
 V2-C returned `CONFIRMED_WIN`. V2-D identified anonymous writable and
 mapped-file PSS reduction as primary movement, with class/metaspace changes as
 supporting evidence. The older ~2.7 MB result below remains historical context,
-not the current V2 matrix value.
+not a current 2.1 or 2.15 release headline.
 
 The important story is not "we got a bigger number." It is:
 
@@ -206,7 +212,7 @@ Doctor-service hardened JMOA in ways that matter beyond one benchmark:
 5. Statistical audits matter as much as bytecode audits.
 6. Smaller honest claims are stronger than inflated invalid claims.
 
-## Current V2 Claim
+## Historical V2 claim
 
 Doctor-service raw-reduced D2R is confirmed over corrected D2 under the same
 Spring Boot fat-JAR/application-CDS protocol:

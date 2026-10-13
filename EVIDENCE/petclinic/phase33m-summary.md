@@ -1,5 +1,9 @@
 # Historical V1 Evidence: PetClinic Phase 33M Summary
 
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
 This is the original full-P2 confirmation, not the final V1-to-V2 matrix row.
 
 ## Status

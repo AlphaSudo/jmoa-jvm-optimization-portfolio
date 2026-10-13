@@ -1,153 +1,66 @@
-# Patient-Service Confirmation Addendum
+# Patient: provisional Java 26/Leyden memory benchmark in JMOA 2.15
 
-## Purpose
+## Outcome and qualification
 
-This addendum summarizes the confirmed patient-service win without exposing private/internal source details. Patient-service is the first JMOA service win and remains the baseline internal case.
+The exact tested Patient configuration showed **8.38 MiB lower median
+stopped-process PSS** across twelve fresh paired blocks. Its **conditional
+lower saving bound was 8.19 MiB**. **Original calibration failed and used an
+approved post-observation exception; performance bounds remain unqualified or
+failed.** Startup/cache warmth, production parity and uploaded-binary parity
+remain unqualified. The release contains no new Maven binaries.
 
-## Current V2 Claim
+## The engineering question
 
-The direct clean no-JMOA-to-final-V2 campaign did not confirm Patient. Both
-bounded screens regressed all three primary metrics; the corrected reverse-order
-screen measured PSS `+3,290 KB`, Private_Dirty `+3,336 KB`, and
-`memory.current` `+3,244,032` bytes with zero workload errors. Both arms mapped
-the identical stock JDK base archive, and the service stopped before
-confirmation.
+The Patient workload retains Java 26/Leyden caches and the intended service
+behavior. The comparison is direct clean B0 versus the frozen composed JMOA
+candidate; each artifact has its own cache. Historical baseline/UTF8 and
+incremental metadata medians were not added to manufacture a total.
 
-The following is the separate accepted V1-to-V2 engineering result:
+The audited artifact contains 788 rewritten static call sites: 455 Tier 1 and
+333 Tier 2 across 498 owners, with 192 logical and 195 physical helpers.
+Those are static identities, not invocation counts or proof every site executed.
+The final process uses no JMOA optimization javaagent.
 
-```text
-comparison: accepted Patient V1 vs corrected V2
-runtime mode: corrected Spring Boot fat JAR
-policy: JDK_BASE_CDS_LOW_DIRTY
-application archive: absent
-paired wins: 3/3
-valid runs: 6/6
-median PSS: -8,279 KB
-median Private_Dirty: -8,444 KB
-median memory.current: -8,523,776 bytes
-```
+## Measurement and interpretation
 
-Both arms mapped the same stock JDK base archive bytes. V2-C returned
-`CONFIRMED_WIN`; V2-D ranked heap page-touch reduction first. Patient no-CDS is
-also independently confirmed at -8,903 KB median PSS. Dynamic Patient
-application CDS remains blocked.
+Twenty-four fresh confirmation units form twelve adjacent, balanced-order
+pairs. Median saving is 8,586 KiB. Eleven of twelve pairs strictly exceed
+8 MiB; one saves 8,096 KiB. The third-smallest saving is 8,384 KiB, giving the
+conditional order-statistic bound under independent, exchangeable, stable
+pairs. Those assumptions are not proved. Process PSS, cgroup file charge,
+artifact bytes and AOT-cache file size remain distinct measurements.
 
-## Historical V1 Claim
+The original eight-control block exceeded its frozen precision limits:
+540 KiB maximum difference versus 512 KiB, and 176 KiB absolute median bias
+versus 128 KiB. The human admitted that exact observed block before untouched
+fresh confirmation. Original calibration remains failed.
 
-The earlier V1-era production claim is retained as project history:
+## Costs and remaining limits
 
-```text
-Phase 31D-P2
-Candidate: C2
-Runtime mode: expanded classpath
-CDS: per-candidate trained archives
-Runtime javaagent: absent
-Result: ~4.2-4.4 MB median container memory reduction
-Individual wins: 9/9
-```
+All 82 cost metrics are published. Five confirmation margin tests failed:
+startup, early read-user, early actuator-prometheus, early stroke-low and
+repeated delete. Cost calibration and stationarity/assessability are unqualified.
+Passing numerical rows therefore do not establish passing performance bounds.
 
-Official median table:
+Both arms share the allocator and native trimming policy. The composed candidate
+reduces dependency line-number observability, a cost not enabled by the stable
+2.1 raw LVT/LVTT reducer. A finite synthetic stroke fixture is not live ML
+equivalence; ConfigClient is absent. Private raw inputs are not distributed.
 
-| Metric | Baseline median | C2 median | Delta |
-| --- | ---: | ---: | ---: |
-| PSS | 330.9 MB | 326.7 MB | -4.2 MB |
-| Private_Dirty | 288.1 MB | 283.8 MB | -4.3 MB |
-| `memory.current` | 419.5 MB | 415.1 MB | -4.4 MB |
-| startup | 27.7 s | 34.0 s | +6.3 s |
+The tested producer is an admitted compatibility port. Equality with uploaded
+stable 2.1 plugin/runtime binaries is unresolved, so 2.15 is an evidence release
+and does not replace stable Maven version 2.1.0.
 
-The startup cost was documented and accepted as a tradeoff for a long-running service profile.
+## Relation to PetClinic
 
-## Independent Evidence Run
+PetClinic 2.1 has an accepted 14.88 MiB process-PSS deployment saving with
+packaging as the dominant factorial main effect and passing frozen cost gates.
+Patient's different JDK, service, cache policy and provisional acceptance state
+prevent interpreting 8.38 MiB as a version-to-version regression or speedup.
 
-Phase 31E produced independent evidence with smaller but consistent container-level savings:
+## Evidence
 
-| Metric | Baseline | C2 | Delta |
-| --- | ---: | ---: | ---: |
-| PSS | 328.0 MB | 325.3 MB | -2.7 MB |
-| Private_Dirty | 285.5 MB | 283.0 MB | -2.6 MB |
-| `memory.current` | 417.3 MB | 414.4 MB | -2.9 MB |
-| RSS | 307.4 MB | 304.5 MB | -2.9 MB |
-
-Phase 31E is supporting evidence, not the official median claim. Do not mix the two.
-
-## Runtime Shape
-
-Patient-service used expanded classpath mode:
-
-```text
-java @jvm-flags -cp @optimized-classpath <application-main>
-```
-
-This made optimized dependency ordering easy to verify and avoided Spring Boot fat-JAR substitution risk.
-
-## Candidate Shape
-
-Public-safe candidate summary:
-
-- MODE_C
-- PACKAGE_SAM
-- warmed adapter-reuse policy
-- 330 eligible sites
-- 317 planned sites
-- 168 rewritten classes
-- 95 logical adapters
-- failed classes: 0
-- workload errors: 0
-
-## Fixed-Plugin Regression Status
-
-Later plugin fixes from the Doctor-service path changed adapter placement and validation behavior. Patient-service was smoke-tested under the fixed plugin as a correctness regression gate.
-
-Stable invariants:
-
-- eligible sites: 330
-- planned sites: 317
-- rewritten classes: 168
-- logical adapters: 95
-- missing adapter references: 0
-- runtime smoke: passed
-- CDS mapped: true
-- warmup: passed
-
-This proved correctness safety under the fixed plugin, but it was not a new full patient memory remeasurement.
-
-## Historical Claim Integrity
-
-For V1 history, use:
-
-```text
-Patient-service official claim is Phase 31D-P2: ~4.2-4.4 MB median memory reduction, 9/9 individual wins.
-```
-
-Also acceptable:
-
-```text
-Phase 31E independently reproduced the direction with ~2.7-2.9 MB container memory savings.
-```
-
-Do not say:
-
-```text
-Phase 31E replaces the official Phase 31D-P2 claim.
-The fixed-plugin smoke is a new memory confirmation.
-```
-
-## Current V2 Claim
-
-Patient-service V2 is confirmed over the accepted V1 artifact under the same
-stock JDK base-CDS policy:
-
-```text
-8,279 KB median PSS reduction
-8,444 KB median Private_Dirty reduction
-8,523,776 byte median memory.current reduction
-3/3 paired wins
-6/6 valid runs
-zero workload errors
-no runtime javaagent
-V2-C CONFIRMED_WIN; V2-D attribution present
-```
-
-Patient no-CDS is independently confirmed at -8,903 KB median PSS. Dynamic
-Patient application CDS remains blocked and must not be conflated with the
-stock JDK base archive used by the primary result.
+- [Patient pairs, identities, costs and limitations](../EVIDENCE/v2.15/patient-scoped-ram-benchmark.md)
+- [Machine-readable record](../EVIDENCE/v2.15/patient-scoped-ram-benchmark.json)
+- [2.15 companion paper](https://github.com/AlphaSudo/jmoa/blob/main/docs/paper/jmoa-v2.15-patient-leyden-memory-evidence.md)
+- [2.15 release](https://github.com/AlphaSudo/jmoa/releases/tag/v2.15)

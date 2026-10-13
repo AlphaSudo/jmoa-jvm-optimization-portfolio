@@ -1,5 +1,11 @@
 # JMOA Plugin And Runtime Hardening Technical Note
 
+**Current boundary:** these invariants belong to stable 2.1 tooling. Historical
+test counts and deployment examples below describe the hardening work, not a
+fresh 2.15 binary qualification. The [Patient 2.15 case](03-patient-service-confirmation-addendum.md)
+is provisional evidence with failed original calibration admitted by exception,
+unqualified or failed performance bounds, and no new Maven binaries.
+
 ## Executive Summary
 
 The strongest lesson across the JMOA case studies is that build-time bytecode optimization is only one part of the product.
@@ -67,7 +73,7 @@ The validator scans rewritten class constant pools for `JmoaPkgAdapters` referen
 
 This converts runtime classloading failures into build failures.
 
-Final fixed-plugin facts:
+Historical fixed-plugin qualification facts:
 
 - 118/118 tests passed
 - missing adapter references: 0
@@ -91,7 +97,7 @@ Product rule:
 Every public memory claim needs either dynamic origin proof or an equivalent runtime-origin gate.
 ```
 
-## Deployment-Mode Classifier
+## Historical deployment-mode investigation
 
 The PetClinic breakthrough came from classifying the real source deployment mode:
 
@@ -180,9 +186,17 @@ The three case studies demonstrate this across:
 - corrected fat JAR + CDS
 - exploded Boot + no-CDS
 
-The PetClinic result is the clearest version of the lesson:
+An earlier PetClinic result illustrated the lesson:
 
 ```text
 the same candidate failed under artificial fat-JAR launch,
 then passed under the real exploded Boot deployment shape.
 ```
+
+
+## Current deployment lesson
+
+Stable 2.1's accepted R41F fat-JAR versus B0 exploded-Boot result intentionally
+includes packaging. Earlier failed fat-JAR candidates do not imply fat packaging
+always loses. Provisional 2.15 requires each application and its own Leyden cache
+to be hash-bound; observed PSS alone does not resolve cost or released-binary parity.

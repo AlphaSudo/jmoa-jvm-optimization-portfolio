@@ -2,7 +2,7 @@
   <img src="ASSETS/jmoa-portfolio-hero-v21.svg" alt="JMOA 2.1 PetClinic result: 14.88 MiB lower process PSS, 16.24 MiB lower target-cgroup memory, and 12 of 12 favorable held-out blocks" width="100%">
 </p>
 
-# JMOA 2.1 JVM Optimization Portfolio
+# JMOA JVM Optimization Portfolio: 2.1 and provisional 2.15
 
 JMOA is an evidence-gated, build-time JVM footprint optimization system for
 Spring Boot. It connects bytecode transformation to the deployment and
@@ -45,6 +45,18 @@ This is a **packaging-inclusive, service-specific result**. The factorial
 estimated a -12,715.25 KiB packaging main effect, -2,465 KiB content main
 effect, and +3,801.5 KiB interaction. It would be incorrect to attribute the
 entire 14.88 MiB to metadata reduction alone.
+
+## Patient benchmark: JMOA 2.15 (provisional)
+
+The tested Java 26/Leyden Patient configuration showed **8.38 MiB lower median
+stopped-process PSS** across 12 paired blocks, with a **conditional 8.19 MiB
+lower saving bound**. **Original calibration failed and used an approved
+post-observation exception; performance bounds remain unqualified or failed.**
+Startup/cache warmth and production or uploaded-binary parity remain unqualified.
+
+This is a separate evidence publication with **no new Maven binaries**. Stable
+2.1.0 and its accepted PetClinic result remain in place. Read the
+[2.15 release](https://github.com/AlphaSudo/jmoa/releases/tag/v2.15).
 
 ## What JMOA solves
 
@@ -109,19 +121,21 @@ live instrumentation layer that also consumes memory and changes timing.
 
 ## Current public scope
 
-JMOA 2.1 publishes PetClinic as its current direct service example. Additional
-service examples will follow only after independent, service-scoped
-confirmation. Older Doctor and Patient research remains available in this
-portfolio as engineering history; it is not folded into the PetClinic effect
-size and is not advertised as part of the v2.1 claim.
+Stable 2.1 publishes the accepted packaging-inclusive PetClinic deployment
+result. Provisional 2.15 publishes the scoped Patient Java 26/Leyden observation
+with the calibration exception and performance limitations above. They are
+different service/runtime studies and are not a version-to-version speedup.
+Historical Doctor/Patient/PetClinic research remains useful for engineering
+lessons; older medians are not current headline claims or additive savings.
 
 Detailed records:
 
+- [Case-study guide](CASE-STUDIES/README.md)
 - [PetClinic 2.1 direct RAM case study](CASE-STUDIES/05-petclinic-v21-direct-ram-win.md)
-- [Machine-readable PetClinic summary](EVIDENCE/v2.1/petclinic-direct-ram-win.json)
-- [Earlier PetClinic no-CDS case study](CASE-STUDIES/01-petclinic-public-nocds-case-study.md)
-- [JMOA plugin/runtime hardening note](CASE-STUDIES/04-jmoa-plugin-runtime-hardening-technical-note.md)
-- [Historical evidence inventory](publish-evidence-inventory.md)
+- [Patient 2.15 scoped benchmark case study](CASE-STUDIES/03-patient-service-confirmation-addendum.md)
+- [Plugin/runtime hardening](CASE-STUDIES/04-jmoa-plugin-runtime-hardening-technical-note.md)
+- [Current and historical evidence](EVIDENCE/README.md)
+- [Updated portfolio summary](ASSETS/portfolio-summary.md)
 
 ## Source and release
 

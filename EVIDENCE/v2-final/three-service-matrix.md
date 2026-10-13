@@ -1,5 +1,9 @@
 # JMOA V2 Final Three-Service Matrix
 
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
 This is the V1-to-final-V2 engineering-evolution matrix. For the direct clean
 no-JMOA comparison, use the [direct product matrix](direct-product-matrix.md).
 

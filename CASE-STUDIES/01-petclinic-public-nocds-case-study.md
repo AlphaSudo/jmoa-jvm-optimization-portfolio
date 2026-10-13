@@ -1,8 +1,14 @@
 # Spring PetClinic Public No-CDS Case Study
 
+**Historical engineering case.** Numbers and verdicts below describe their
+original experiments. The current publications are the [accepted 2.1 PetClinic
+result](05-petclinic-v21-direct-ram-win.md) and [provisional 2.15 Patient
+benchmark](03-patient-service-confirmation-addendum.md). These historical
+comparisons are not added to or substituted for current release effects.
+
 ## Executive Summary
 
-Direct clean no-JMOA to final V2 result:
+Historical direct clean no-JMOA to final V2 result:
 
 | Metric | Single-screen delta |
 | --- | ---: |

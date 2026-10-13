@@ -1,6 +1,10 @@
 # Historical V1 Evidence: Doctor-Service Phase 32M Summary
 
-This file preserves the corrected V1-era Doctor result. The current V2 release
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
+This file preserves the corrected V1-era Doctor result. The historical V2 incremental
 result is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Status

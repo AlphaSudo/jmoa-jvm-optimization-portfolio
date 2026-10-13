@@ -1,8 +1,9 @@
 flowchart LR
-  A["Workload profile"] --> B["Candidate selection"]
-  B --> C["MODE_C bytecode rewrite"]
-  C --> D["PACKAGE_SAM adapter consolidation"]
-  D --> E["Artifact materialization"]
-  E --> F["Runtime-origin verification"]
-  F --> G["PSS / Private_Dirty / cgroup measurement"]
-  G --> H["Claim reconciliation"]
+  A["Representative workload profile"] --> B["Safety and cost admission"]
+  B --> C["Lambda and adapter rewriting"]
+  B --> D["Opt-in raw LVT/LVTT reduction"]
+  C --> E["Byte audit and deployment materialization"]
+  D --> E
+  E --> F["Artifact, origin and archive/cache identity"]
+  F --> G["Semantic workload and paired memory/cost evidence"]
+  G --> H["Scoped claim with qualifications or rejection"]

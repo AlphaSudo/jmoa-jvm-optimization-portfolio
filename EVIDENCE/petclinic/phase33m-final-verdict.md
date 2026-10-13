@@ -1,6 +1,10 @@
 # Historical V1 Evidence: PetClinic Phase 33M Final Verdict
 
-This verdict remains the public V1 foundation. The current incremental V2
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
+This verdict remains the public V1 foundation. The historical incremental V2
 result is in [`../v2-final/three-service-matrix.md`](../v2-final/three-service-matrix.md).
 
 ## Verdict

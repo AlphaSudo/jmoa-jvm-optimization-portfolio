@@ -1,5 +1,9 @@
 # JMOA V2 Direct Product Matrix
 
+**Historical protocol record.** Original measured values are preserved. For
+current stable 2.1 and provisional 2.15 publications, use the [evidence index](../README.md).
+Older direct/incremental effects are not summed or advertised as current results.
+
 Status: `DIRECT_PRODUCT_MATRIX_UNDER_RECONCILIATION`.
 
 Comparison: clean no-JMOA `B0` to final JMOA V2 under a frozen policy per
